@@ -1,0 +1,551 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PRO-TECHNOLOGIE@ | Centre de Réparation Électronique</title>
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: 'Segoe UI', Roboto, sans-serif;
+        }
+
+        body {
+            background-color: #f4f7f6;
+            color: #333;
+            line-height: 1.6;
+        }
+
+        /* En-tête avec fond bleu foncé */
+        header {
+            background-color: #121e63;
+            color: #fff;
+            padding: 0.8rem 1rem;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.15);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        .header-left {
+            display: flex;
+            align-items: center;
+            gap: 0.8rem;
+        }
+
+        .menu-btn {
+            font-size: 1.8rem;
+            background: none;
+            border: none;
+            color: #fff;
+            cursor: pointer;
+            width: auto;
+            padding: 0;
+            line-height: 1;
+            transition: transform 0.2s ease;
+        }
+
+        .menu-btn:active {
+            transform: scale(0.9);
+        }
+
+        /* Style spécifique pour le logo PRO-TECHNOLOGIE */
+        .logo-text {
+            font-family: 'Impact', 'Arial Black', sans-serif;
+            font-size: 1.4rem;
+            font-style: italic;
+            font-weight: 900;
+            letter-spacing: 0.5px;
+            text-transform: uppercase;
+        }
+
+        .logo-pro {
+            color: #d2e624;
+        }
+
+        .logo-tech {
+            color: #00a8ff;
+        }
+
+        .logo-ologie {
+            color: #ffffff;
+        }
+
+        /* Menu Latéral (Sidebar) */
+        .sidebar {
+            position: fixed;
+            top: 0;
+            left: -280px;
+            width: 280px;
+            height: 100%;
+            background-color: #121e63;
+            color: white;
+            transition: 0.3s ease;
+            z-index: 1001;
+            padding: 2rem 1rem;
+            box-shadow: 2px 0 10px rgba(0,0,0,0.3);
+        }
+
+        .sidebar.active {
+            left: 0;
+        }
+
+        .sidebar-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 1px solid #ffff00;
+            padding-bottom: 1rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .close-btn {
+            background: none;
+            border: none;
+            color: #ffff00;
+            font-size: 1.5rem;
+            cursor: pointer;
+            width: auto;
+        }
+
+        .sidebar nav ul {
+            list-style: none;
+        }
+
+        .sidebar nav ul li {
+            margin-bottom: 0.2rem;
+        }
+
+        .sidebar nav ul li a {
+            color: #dcdde1;
+            text-decoration: none;
+            font-size: 1.1rem;
+            display: block;
+            transition: 0.2s;
+        }
+
+        .sidebar nav ul li a:hover {
+            color: #00a8ff;
+            padding-left: 8px;
+        }
+
+        /* Overlay */
+        .overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.5);
+            display: none;
+            z-index: 1000;
+            transition: opacity 0.3s ease;
+        }
+
+        .overlay.active {
+            display: block;
+        }
+
+        /* Hero */
+        .hero {
+            background: #1a8;
+            color: #fff;
+            text-align: center;
+            padding: 2.5rem 1rem;
+            border-top: 1px solid #1a2a80;
+        }
+
+        .hero h2 {
+            font-size: 1.4rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .hero p {
+            font-size: 0.95rem;
+            color: #dcdde1;
+        }
+
+        .container {
+            max-width: 650px;
+            margin: 1.5rem auto;
+            padding: 0 1rem;
+            display: flex;
+            flex-direction: column;
+            gap: 1.5rem;
+        }
+
+        /* --- ANIMATIONS ET EFFETS --- */
+
+        /* Animation d'apparition fluide des cartes */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .card {
+            background: #fff;
+            padding: 1.5rem;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+            animation: fadeInUp 0.6s ease-out forwards;
+        }
+
+        .card h3 {
+            margin-bottom: 1rem;
+            color: #1a2;
+            border-bottom: 2px solid #00a8ff;
+            padding-bottom: 0.5rem;
+        }
+
+        .info-list {
+            list-style: none;
+        }
+
+        .info-list li {
+            margin-bottom: 0.8rem;
+            display: flex;
+            align-items: flex-start;
+            gap: 0.5rem;
+            font-size: 0.95rem;
+        }
+
+        .info-list strong {
+            color: #121e63;
+            min-width: 110px;
+        }
+
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1rem;
+        }
+
+        /* Animation au survol des services */
+        .service-item {
+            background: #00a8ff;
+            padding: 1rem;
+            border-radius: 6px;
+            border-left: 4px solid #00a8ff;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .service-item:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 6px 15px rgba(0, 168, 255, 0.2);
+        }
+
+        .service-item h4 {
+            color: #121e63;
+            margin-bottom: 0.3rem;
+        }
+
+        .form-group {
+            margin-bottom: 1rem;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 0.4rem;
+            font-weight: 600;
+        }
+
+        .form-group input, .form-group select, .form-group textarea {
+            width: 100%;
+            padding: 0.8rem;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            font-size: 1rem;
+            transition: border-color 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .form-group input:focus, .form-group select:focus, .form-group textarea:focus {
+            outline: none;
+            border-color: #00a8ff;
+            box-shadow: 0 0 5px rgba(0, 168, 255, 0.4);
+        }
+
+        button, .btn-whatsapp {
+            display: block;
+            width: 100%;
+            padding: 0.8rem;
+            text-align: center;
+            background-color: #00a8ff;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            font-size: 1rem;
+            font-weight: bold;
+            text-decoration: none;
+            cursor: pointer;
+            box-sizing: border-box;
+            transition: background-color 0.3s ease, transform 0.1s ease;
+        }
+
+        #btnCheck:active {
+            transform: scale(0.98);
+        }
+
+        /* Animation de pulsation sur le bouton WhatsApp */
+        @keyframes pulse {
+            0% {
+                transform: scale(1);
+                box-shadow: 0 0 0 0 rgba(37, 211, 102, 0.6);
+            }
+            70% {
+                transform: scale(1.02);
+                box-shadow: 0 0 0 12px rgba(37, 211, 102, 0);
+            }
+            100% {
+                transform: scale(1);
+                box-shadow: 0 0 0 0 rgba(37, 211, 102, 0);
+            }
+        }
+
+        .btn-whatsapp {
+            background-color: #25d366;
+            margin-top: 0.5rem;
+            animation: pulse 2s infinite;
+        }
+
+        .btn-whatsapp:hover {
+            background-color: #1ebc57;
+        }
+
+        #status-result {
+            margin-top: 1rem;
+            padding: 1rem;
+            border-radius: 5px;
+            display: none;
+            animation: fadeInUp 0.4s ease-out;
+        }
+
+        .status-found {
+            background-color: #e1f5fe;
+            color: #0288d1;
+            border: 1px solid #b3e5fc;
+        }
+
+        footer {
+            text-align: center;
+            padding: 1.5rem;
+            background: #121e63;
+            color: #aaa;
+            margin-top: 2rem;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Menu Latéral -->
+    <div class="sidebar" id="sidebar">
+        <div class="sidebar-header">
+            <h3>Menu</h3>
+            <button class="close-btn" id="closeMenu">&times;</button>
+        </div>
+        <nav>
+            <ul>
+                <li><a href="#accueil" class="nav-link">Accueil</a></li>
+                <li><a href="#services" class="nav-link">Nos Services</a></li>
+                <li><a href="#suivi" class="nav-link">Suivi de Réparation</a></li>
+                <li><a href="#devis" class="nav-link">Demander un Devis</a></li>
+                <li><a href="#contact" class="nav-link">Adresse & Horaires</a></li>
+            </ul>
+        </nav>
+    </div>
+
+    <!-- Overlay -->
+    <div class="overlay" id="overlay"></div>
+
+    <!-- En-tête personnalisé -->
+    <header id="accueil">
+        <div class="header-left">
+            <button class="menu-btn" id="openMenu">&#9776;</button>
+            <h1 class="logo-text">
+                <span class="logo-pro">PRO-</span><span class="logo-tech">TECHN</span><span class="logo-ologie">OLOGIE</span>
+            </h1>
+        </div>
+    </header>
+
+    <section class="hero">
+        <h2>Centre de Réparation Électronique Professionnel</h2>
+        <p>Expertise • Rapidité • Garantie</p>
+    </section>
+
+    <div class="container">
+        
+        <!-- Section : Services -->
+        <div class="card" id="services">
+            <h3>NOS SERVICES</h3>
+            <div class="services-grid">
+                <div class="service-item">
+                    <h4>💻 Laptops</h4>
+                    <p style="font-size: 0.85rem;">Changement d'écran, clavier, batterie, désoxydation, réparation carte mère...</p>
+                </div>
+                <div class="service-item">
+                    <h4>📱 Smartphones</h4>
+                    <p style="font-size: 0.85rem;">Remplacement vitre, vitrage arrière iphone, connecteur de charge, batterie, caméra...</p>
+                </div>
+                <div class="service-item">
+                    <h4>🔬 Micro-Soudure</h4>
+                    <p style="font-size: 0.85rem;">Réparation de puces court-circuitées(CPU/GPU) et composants CMS sur la carte mère.</p>
+                </div>
+                <div class="service-item">
+                    <h4>⚡ Appareils Électriques</h4>
+                    <p style="font-size: 0.85rem;">Diagnostic et réparation de divers équipements électriques.</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Section 1 : Suivi de Réparation -->
+        <div class="card" id="suivi">
+            <h3>SUIVI DE RÉPARATION</h3>
+            <p style="margin-bottom: 1rem; font-size: 0.85rem; color: #666;">Veuillez Entrez le code figurant sur votre reçu pour vérifier l'état de votre appareil.</p>
+            
+            <div class="form-group">
+                <label for="trackingCode">Code de Réparation (ex: PRO-000R)</label>
+                <input type="text" id="trackingCode" placeholder="Saisissez votre code ici...">
+            </div>
+            <button id="btnCheck">Vérifier l'État de Votre Appareil</button>
+
+            <div id="status-result"></div>
+        </div>
+
+        <!-- Section 2 : Devis WhatsApp -->
+        <div class="card" id="devis">
+            <h3>DEMANDE DE DEVIS RAPIDE</h3>
+            
+            <div class="form-group">
+                <label for="deviceType">Type d'Appareil :</label>
+                <select id="deviceType">
+                    <option value="Smartphone">Smartphone</option>
+                    <option value="Laptop">Laptop</option>
+                    <option value="Tablette">Tablette / Ipad</option>
+                    <option value="Radio">Radio</option>
+                    <option value="Power bank">Power bank</option>
+                    <option value="Autre">Autre équipement</option>
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label for="model">Marque et Modèle :</label>
+                <select id="model">
+                    <option value="Lenovo">Lenovo</option>
+                    <option value="Dell">Dell</option>
+                    <option value="Hp">Hp</option>
+                    <option value="Autre Marque Laptops">Autre Marque Laptops</option>
+                    <option value="Samsung">Samsung</option>
+                    <option value="Iphone">iphone</option>
+                    <option value="Motorola">Motorola</option>
+                    <option value="Autre Marque Smartphones">Autre Marque Smartphones</option>
+                    <option value="Autre">Autre</option>
+                </select>
+            </div>  
+
+            <div class="form-group">
+                <label for="problem">Description du Problème :</label>
+                <textarea id="problem" rows="3" placeholder="ex: Écran cassé, problème de charge..."></textarea>
+            </div>
+
+            <a id="whatsappLink" href="#" class="btn-whatsapp">Demander un Devis via WhatsApp</a>
+        </div>
+
+        <!-- Section 3 : Coordonnées et Horaires -->
+        <div class="card" id="contact">
+            <h3>Adresse & Horaires</h3>
+            <ul class="info-list">
+                <li><strong>📍 Adresse :</strong> <span>Angle rue Lamarre et Leconte, à l'étage église baptiste philadelphie, Petit-Goâve Haïti.</span></li>
+                <li><strong>📞 Téléphone :</strong> <span>+50931241421/42282667</span></li>
+                <li><strong>✉️ Email :</strong> <span>protechnologie27@gmail.com</span></li>
+                <li><strong>🕒 Lundi - Ven :</strong> <span>9h00 - 17h00</span></li>
+                <li><strong>🕒 Samedi :</strong> <span>10h00 - 14h00</span></li>
+                <li><strong>🚫 Dimanche :</strong> <span>Fermé</span></li>
+            </ul>
+        </div>
+
+    </div>
+
+    <footer>
+        <p>@ORIMA TMG| #Nahomie Charles| #Cadet Saint-Fleur| #Frantz Charles| &copy; 2026 PRO-TECHNOLOGIE. Tous droits réservés.</p>
+    </footer>
+
+    <script>
+        const myPhoneNumber = "50931241421"; 
+
+        const sidebar = document.getElementById("sidebar");
+        const overlay = document.getElementById("overlay");
+        const openMenu = document.getElementById("openMenu");
+        const closeMenu = document.getElementById("closeMenu");
+        const navLinks = document.querySelectorAll(".nav-link");
+
+        function toggleSidebar() {
+            sidebar.classList.toggle("active");
+            overlay.classList.toggle("active");
+        }
+
+        openMenu.addEventListener("click", toggleSidebar);
+        closeMenu.addEventListener("click", toggleSidebar);
+        overlay.addEventListener("click", toggleSidebar);
+
+        navLinks.forEach(link => {
+            link.addEventListener("click", () => {
+                sidebar.classList.remove("active");
+                overlay.classList.remove("active");
+            });
+        });
+
+        const repairDatabase = {
+            "PRO-101": "Réparation terminée : Votre appareil est prêt à être récupéré !",
+            "PRO-102": "En cours de réparation : Remplacement du connecteur de charge.",
+            "PRO-103": "En cours de diagnostic : Inspection de la carte mère."
+        };
+
+        document.getElementById("btnCheck").addEventListener("click", function() {
+            const inputVal = document.getElementById("trackingCode").value.trim().toUpperCase();
+            const resultDiv = document.getElementById("status-result");
+
+            if (!inputVal) {
+                alert("Veuillez entrer un code valide!!!");
+                return;
+            }
+
+            resultDiv.style.display = "block";
+            if (repairDatabase[inputVal]) {
+                resultDiv.className = "status-found";
+                resultDiv.style.color = "#25d366";
+                resultDiv.innerHTML = "<strong>Code : " + inputVal + "</strong><br>" + repairDatabase[inputVal];
+            } else {
+                resultDiv.className = "status-found";
+                resultDiv.style.color = "#c0392b";
+                resultDiv.innerHTML = "<strong>Ce code n'existe pas dans notre base de données.</strong> Veuillez vérifier le reçu.";
+            }
+        });
+
+        document.getElementById("whatsappLink").addEventListener("click", function(e) {
+            const device = document.getElementById("deviceType").value;
+            const model = document.getElementById("model").value;
+            const problem = document.getElementById("problem").value.trim();
+
+            if (!problem) {
+                e.preventDefault();
+                alert("Veuillez décrire le problème avant d'envoyer la demande.");
+                return;
+            }
+
+            const text = "Bonjour PRO-TECHNOLOGIE ! Je souhaite obtenir un devis pour :%0A- Appareil : " + encodeURIComponent(device) + "%0A- Marque : " + encodeURIComponent(model) + "%0A- Problème : " + encodeURIComponent(problem);
+            
+            this.href = "https://wa.me/" + myPhoneNumber + "?text=" + text;
+        });
+    </script>
+</body>
+</html>
