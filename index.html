@@ -505,9 +505,9 @@
         });
 
         const repairDatabase = {
-            "PRO-003L": "Installation en cours : Monsieur POPO LOVE, votre appareil est en cours d'installation windows 11 niveau 50%... Veuillez patientez s'il vous plaît !!!",
-            "PRO-001": "En cours de réparation : Monsieur Jeff GÉDÉON, votre appareil idenfié au numéro suivant:DA0P9CMB6C0, est en cours de réparation niveau 60%... Veuillez patientez s'il vous plaît !!!",
-            "PRO-002T": "En cours de diagnostic : Monsieur Paul Yves, votre appareil samsung A10e est au niveau d'inspection de la carte mère niveau 40%... Veuillez patientez s'il vous plaît !!!"
+            "PRO-003L": "Installation terminée : Monsieur POPO LOVE, votre d'installation windows 11 est terminée... 🤗🤗🤗!!!",
+            "PRO-001": "Réparation terminée : Monsieur Jeff GÉDÉON, votre appareil idenfié au numéro suivant:DA0P9CMB6C0, est terminé...🤗🤗🤗 !!!",
+            "PRO-002T": "En cours de diagnostic : Monsieur Paul Yves, votre appareil samsung A10e est au niveau d'inspection de la carte mère niveau 50%... Veuillez patientez !!!"
         };
 
         document.getElementById("btnCheck").addEventListener("click", function() {
@@ -522,7 +522,7 @@
             resultDiv.style.display = "block";
             if (repairDatabase[inputVal]) {
                 resultDiv.className = "status-found";
-                resultDiv.style.color = "#FFA500";
+                resultDiv.style.color = "#25d366";
                 resultDiv.innerHTML = "<strong>Code : " + inputVal + "</strong><br>" + repairDatabase[inputVal];
             } else {
                 resultDiv.className = "status-found";
