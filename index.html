@@ -5,28 +5,49 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>PRO-TECHNOLOGIE@ | Centre de Réparation Électronique</title>
     <style>
+        :root {
+            --bg-primary: linear-gradient(135deg, #f0f4f8 0%, #e2e8f0 100%);
+            --card-bg: #ffffff;
+            --text-color: #2d3748;
+            --header-bg: #300030;
+            --accent-gold: #E9B80F;
+            --accent-blue: #00a8ff;
+            --border-color: #e2e8f0;
+        }
+
+        body.dark-mode {
+            --bg-primary: #121212;
+            --card-bg: #1e1e1e;
+            --text-color: #e2e8f0;
+            --header-bg: #1a001a;
+            --border-color: #333333;
+        }
+
         * {
             box-sizing: border-box;
             margin: 0;
             padding: 0;
             font-family: 'Segoe UI', Roboto, sans-serif;
+            scroll-behavior: smooth;
         }
 
         body {
-            background-color: #f4f7f6;
-            color: #333;
+            background: var(--bg-primary);
+            color: var(--text-color);
             line-height: 1.6;
+            min-height: 100vh;
+            transition: background 0.3s ease, color 0.3s ease;
         }
 
-        /* En-tête avec fond bleu foncé */
+        /* En-tête */
         header {
-            background-color: #121e63;
+            background-color: var(--header-bg);  
             color: #fff;
-            padding: 0.8rem 1rem;
+            padding: 0.8rem 0.8rem;
             display: flex;
             align-items: center;
             justify-content: space-between;
-            box-shadow: 0 4px 6px rgba(0,0,0,0.15);
+            box-shadow: 0 4px 10px rgba(0,0,0,0.2);
             position: sticky;
             top: 0;
             z-index: 1000;
@@ -35,7 +56,7 @@
         .header-left {
             display: flex;
             align-items: center;
-            gap: 0.8rem;
+            gap: 0.4rem;
         }
 
         .menu-btn {
@@ -44,62 +65,82 @@
             border: none;
             color: #fff;
             cursor: pointer;
-            width: auto;
-            padding: 0;
             line-height: 1;
-            transition: transform 0.2s ease;
+            padding: 0 0.2rem;
         }
 
-        .menu-btn:active {
-            transform: scale(0.9);
-        }
-
-        /* Style spécifique pour le logo PRO-TECHNOLOGIE */
         .logo-text {
             font-family: 'Impact', 'Arial Black', sans-serif;
-            font-size: 1.4rem;
+            font-size: 1.35rem;
             font-style: italic;
             font-weight: 900;
             letter-spacing: 0.5px;
             text-transform: uppercase;
+            white-space: nowrap;
         }
 
-        .logo-pro {
-            color: #d2e624;
+        .logo-pro { color: #d2e624; }
+        .logo-tech { color: var(--accent-blue); }
+        .logo-ologie { color: #ffffff; }
+
+        .theme-toggle {
+            background: rgba(255,255,255,0.1);
+            border: 1px solid var(--accent-gold);
+            color: var(--accent-gold);
+            padding: 0.4rem 0.7rem;
+            border-radius: 20px;
+            cursor: pointer;
+            font-size: 0.8rem;
+            font-weight: bold;
+            white-space: nowrap;
         }
 
-        .logo-tech {
-            color: #00a8ff;
+        /* Bannière Défilante */
+        .scrolling-banner {
+            background-color: var(--accent-gold);
+            color: #300030;
+            padding: 0.6rem 0;
+            overflow: hidden;
+            white-space: nowrap;
+            box-shadow: inset 0 2px 4px rgba(0,0,0,0.1);
         }
 
-        .logo-ologie {
-            color: #ffffff;
+        .scrolling-text {
+            display: inline-block;
+            padding-left: 100%;
+            animation: marquee 18s linear infinite;
+            font-weight: 700;
+            font-size: 0.95rem;
         }
 
-        /* Menu Latéral (Sidebar) */
+        @keyframes marquee {
+            0% { transform: translate(0, 0); }
+            100% { transform: translate(-100%, 0); }
+        }
+
+        /* Menu Latéral */
         .sidebar {
             position: fixed;
             top: 0;
             left: -280px;
             width: 280px;
             height: 100%;
-            background-color: #121e63;
-            color: white;
+            background-color: var(--header-bg);
+            color: #ffffff;
             transition: 0.3s ease;
             z-index: 1001;
             padding: 2rem 1rem;
             box-shadow: 2px 0 10px rgba(0,0,0,0.3);
+            overflow-y: auto;
         }
 
-        .sidebar.active {
-            left: 0;
-        }
+        .sidebar.active { left: 0; }
 
         .sidebar-header {
             display: flex;
             justify-content: space-between;
             align-items: center;
-            border-bottom: 1px solid #ffff00;
+            border-bottom: 1px solid var(--accent-gold);
             padding-bottom: 1rem;
             margin-bottom: 1.5rem;
         }
@@ -107,71 +148,43 @@
         .close-btn {
             background: none;
             border: none;
-            color: #ffff00;
-            font-size: 1.5rem;
+            color: var(--accent-gold);
+            font-size: 1.8rem;
             cursor: pointer;
-            width: auto;
         }
 
-        .sidebar nav ul {
-            list-style: none;
-        }
-
-        .sidebar nav ul li {
-            margin-bottom: 0.2rem;
-        }
+        .sidebar nav ul { list-style: none; }
+        .sidebar nav ul li { margin-bottom: 0.4rem; }
 
         .sidebar nav ul li a {
-            color: #dcdde1;
+            color: #f1f5f9;
             text-decoration: none;
-            font-size: 1.1rem;
+            font-size: 1.05rem;
             display: block;
+            padding: 0.4rem 0;
             transition: 0.2s;
         }
 
         .sidebar nav ul li a:hover {
-            color: #00a8ff;
+            color: var(--accent-gold);
             padding-left: 8px;
         }
 
-        /* Overlay */
         .overlay {
             position: fixed;
             top: 0;
             left: 0;
             width: 100%;
             height: 100%;
-            background: rgba(0, 0, 0, 0.5);
+            background: rgba(0, 0, 0, 0.6);
             display: none;
             z-index: 1000;
-            transition: opacity 0.3s ease;
         }
 
-        .overlay.active {
-            display: block;
-        }
-
-        /* Hero */
-        .hero {
-            background: #1a8;
-            color: #fff;
-            text-align: center;
-            padding: 2.5rem 1rem;
-            border-top: 1px solid #1a2a80;
-        }
-
-        .hero h2 {
-            font-size: 1.4rem;
-            margin-bottom: 0.5rem;
-        }
-
-        .hero p {
-            font-size: 0.95rem;
-            color: #dcdde1;
-        }
+        .overlay.active { display: block; }
 
         .container {
-            max-width: 650px;
+            max-width: 700px;
             margin: 1.5rem auto;
             padding: 0 1rem;
             display: flex;
@@ -179,169 +192,172 @@
             gap: 1.5rem;
         }
 
-        /* --- ANIMATIONS ET EFFETS --- */
-
-        /* Animation d'apparition fluide des cartes */
-        @keyframes fadeInUp {
-            from {
-                opacity: 0;
-                transform: translateY(20px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-
+        /* Cartes */
         .card {
-            background: #fff;
+            background: var(--card-bg);
             padding: 1.5rem;
-            border-radius: 8px;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
-            animation: fadeInUp 0.6s ease-out forwards;
+            border-radius: 12px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.06);
+            border: 1px solid var(--border-color);
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
         }
 
         .card h3 {
             margin-bottom: 1rem;
-            color: #1a2;
-            border-bottom: 2px solid #00a8ff;
+            color: var(--accent-blue);
+            border-bottom: 2px solid var(--accent-gold);
             padding-bottom: 0.5rem;
+            text-transform: uppercase;
+            font-size: 1.1rem;
         }
 
-        .info-list {
-            list-style: none;
-        }
-
-        .info-list li {
-            margin-bottom: 0.8rem;
-            display: flex;
-            align-items: flex-start;
-            gap: 0.5rem;
+        /* Barre de Recherche */
+        .search-box {
+            width: 100%;
+            padding: 0.8rem 1rem;
+            border-radius: 25px;
+            border: 2px solid var(--accent-blue);
+            outline: none;
             font-size: 0.95rem;
-        }
-
-        .info-list strong {
-            color: #121e63;
-            min-width: 110px;
+            margin-bottom: 1rem;
+            background: var(--card-bg);
+            color: var(--text-color);
         }
 
         .services-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
             gap: 1rem;
         }
 
-        /* Animation au survol des services */
         .service-item {
-            background: #f8f9fa;
+            background: rgba(0,0,0,0.02);
             padding: 1rem;
-            border-radius: 6px;
-            border-left: 4px solid #00a8ff;
+            border-radius: 8px;
+            border-left: 4px solid var(--accent-blue);
             transition: transform 0.3s ease, box-shadow 0.3s ease;
         }
 
         .service-item:hover {
-            transform: translateY(-5px);
+            transform: translateY(-4px);
             box-shadow: 0 6px 15px rgba(0, 168, 255, 0.2);
         }
 
         .service-item h4 {
-            color: #121e63;
+            color: var(--text-color);
             margin-bottom: 0.3rem;
+            font-size: 0.95rem;
         }
 
-        .form-group {
-            margin-bottom: 1rem;
+        .service-item p {
+            font-size: 0.85rem;
+            opacity: 0.8;
         }
+
+        /* Formulaires & Boutons */
+        .form-group { margin-bottom: 1rem; }
 
         .form-group label {
             display: block;
             margin-bottom: 0.4rem;
             font-weight: 600;
+            font-size: 0.9rem;
         }
 
         .form-group input, .form-group select, .form-group textarea {
             width: 100%;
             padding: 0.8rem;
-            border: 1px solid #ccc;
-            border-radius: 5px;
-            font-size: 1rem;
-            transition: border-color 0.3s ease, box-shadow 0.3s ease;
+            border: 1px solid var(--border-color);
+            border-radius: 6px;
+            font-size: 0.95rem;
+            background-color: var(--card-bg);
+            color: var(--text-color);
         }
 
-        .form-group input:focus, .form-group select:focus, .form-group textarea:focus {
-            outline: none;
-            border-color: #00a8ff;
-            box-shadow: 0 0 5px rgba(0, 168, 255, 0.4);
-        }
-
-        button, .btn-whatsapp {
+        button, .btn-whatsapp, .btn-action, .btn-pay {
             display: block;
             width: 100%;
-            padding: 0.8rem;
+            padding: 0.85rem;
             text-align: center;
-            background-color: #00a8ff;
+            background-color: var(--accent-blue);
             color: white;
             border: none;
-            border-radius: 5px;
-            font-size: 1rem;
+            border-radius: 6px;
+            font-size: 0.95rem;
             font-weight: bold;
             text-decoration: none;
             cursor: pointer;
-            box-sizing: border-box;
-            transition: background-color 0.3s ease, transform 0.1s ease;
+            transition: opacity 0.2s ease, transform 0.2s ease;
         }
 
-        #btnCheck:active {
-            transform: scale(0.98);
-        }
-
-        /* Animation de pulsation sur le bouton WhatsApp */
-        @keyframes pulse {
-            0% {
-                transform: scale(1);
-                box-shadow: 0 0 0 0 rgba(37, 211, 102, 0.6);
-            }
-            70% {
-                transform: scale(1.02);
-                box-shadow: 0 0 0 12px rgba(37, 211, 102, 0);
-            }
-            100% {
-                transform: scale(1);
-                box-shadow: 0 0 0 0 rgba(37, 211, 102, 0);
-            }
+        button:hover, .btn-action:hover, .btn-pay:hover {
+            opacity: 0.9;
+            transform: translateY(-1px);
         }
 
         .btn-whatsapp {
             background-color: #25d366;
             margin-top: 0.5rem;
-            animation: pulse 2s infinite;
         }
 
-        .btn-whatsapp:hover {
-            background-color: #1ebc57;
+        /* Bouton Flottant WhatsApp */
+        .floating-wa {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            background-color: #25d366;
+            color: white;
+            width: 55px;
+            height: 55px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.8rem;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+            z-index: 999;
+            text-decoration: none;
+            transition: transform 0.3s ease;
         }
+
+        .floating-wa:hover {
+            transform: scale(1.1);
+        }
+
+        /* Méthodes de paiement */
+        .pay-btn-moncash { background-color: #e11d48; margin-top: 0.5rem; }
+        .pay-btn-natcash { background-color: #F5820D; margin-top: 0.5rem; }
+        .pay-btn-card { background-color: #300030; margin-top: 0.5rem; }
 
         #status-result {
             margin-top: 1rem;
             padding: 1rem;
-            border-radius: 5px;
+            border-radius: 6px;
             display: none;
-            animation: fadeInUp 0.4s ease-out;
         }
 
         .status-found {
-            background-color: #e1f5fe;
-            color: #0288d1;
-            border: 1px solid #b3e5fc;
+            background-color: rgba(0, 168, 255, 0.1);
+            color: var(--accent-blue);
+            border: 1px solid var(--accent-blue);
+        }
+
+        .info-list { list-style: none; }
+        .info-list li {
+            margin-bottom: 0.8rem;
+            display: flex;
+            align-items: flex-start;
+            gap: 0.5rem;
+            font-size: 0.9rem;
         }
 
         footer {
             text-align: center;
             padding: 1.5rem;
-            background: #121e63;
+            background: var(--header-bg);
             color: #aaa;
             margin-top: 2rem;
+            font-size: 0.85rem;
         }
     </style>
 </head>
@@ -356,18 +372,22 @@
         <nav>
             <ul>
                 <li><a href="#accueil" class="nav-link">Accueil</a></li>
-                <li><a href="#services" class="nav-link">Nos Services</a></li>
+                <li><a href="#apropos" class="nav-link">À Propos</a></li>
+                <li><a href="#services-hw" class="nav-link">Services Hardware</a></li>
+                <li><a href="#services-sw" class="nav-link">Services Software</a></li>
+                <li><a href="#services-credit" class="nav-link">Crédit & Échange</a></li>
                 <li><a href="#suivi" class="nav-link">Suivi de Réparation</a></li>
+                <li><a href="#paiement" class="nav-link">Paiement En Ligne</a></li>
                 <li><a href="#devis" class="nav-link">Demander un Devis</a></li>
-                <li><a href="#contact" class="nav-link">Adresse & Horaires</a></li>
+                <li><a href="#avis" class="nav-link">Avis Clients</a></li>
+                <li><a href="#contact" class="nav-link">Adresse & Contact</a></li>
             </ul>
         </nav>
     </div>
 
-    <!-- Overlay -->
     <div class="overlay" id="overlay"></div>
 
-    <!-- En-tête personnalisé -->
+    <!-- En-tête -->
     <header id="accueil">
         <div class="header-left">
             <button class="menu-btn" id="openMenu">&#9776;</button>
@@ -375,118 +395,174 @@
                 <span class="logo-pro">PRO-</span><span class="logo-tech">TECHN</span><span class="logo-ologie">OLOGIE</span>
             </h1>
         </div>
+        <button class="theme-toggle" id="themeToggle">🌙 Mode Sombre</button>
     </header>
 
-    <section class="hero">
-        <h2>Centre de Réparation Électronique Professionnel</h2>
-        <p>Expertise • Rapidité • Garantie</p>
-    </section>
+    <!-- Texte Défilant -->
+    <div class="scrolling-banner">
+        <div class="scrolling-text">
+            Centre de Réparation Électronique Professionnel à Petit-Goâve — Expertise • Rapidité • Garantie — Bienvenue chez PRO-TECHNOLOGIE 🤗🤗 !!!
+        </div>
+    </div>
 
     <div class="container">
-        
-        <!-- Section : Services -->
-        <div class="card" id="services">
-            <h3>NOS SERVICES</h3>
+
+        <!-- BARRE DE RECHERCHE -->
+        <input type="text" id="searchInput" class="search-box" placeholder="🔍 Rechercher un service (ex: iCloud, écran, MonCash)...">
+
+        <!-- SECTION : À PROPOS -->
+        <div class="card" id="apropos">
+            <h3>À PROPOS DE NOUS</h3>
+            <p style="font-size: 0.95rem; line-height: 1.6;">
+                <strong>PRO-TECHNOLOGIE</strong> est votre centre de réparation technique spécialisé à Petit-Goâve. Nous offrons des solutions de pointe en maintenance matérielle (Hardware), diagnostic sur carte mère, déblocage logiciel (Software), ainsi que des services financiers (PRO-CRÉDIT S.A, MonCash, NatCash et bureau d'échange).
+            </p>
+        </div>
+
+        <!-- SECTION : SERVICES HARDWARE -->
+        <div class="card" id="services-hw">
+            <h3>SERVICES HARDWARE</h3>
             <div class="services-grid">
                 <div class="service-item">
-                    <h4>💻 Laptops</h4>
-                    <p style="font-size: 0.85rem;">Changement d'écran, clavier, batterie, désoxydation, réparation carte mère...</p>
+                    <h4>🛠️ Système & Maintenance</h4>
+                    <p>Entretien complet, nettoyage thermique et optimisation matérielle.</p>
                 </div>
                 <div class="service-item">
-                    <h4>📱 Smartphones</h4>
-                    <p style="font-size: 0.85rem;">Remplacement vitre, vitrage arrière iphone, connecteur de charge Samsung, batterie, caméra...</p>
+                    <h4>🔬 Réparation Carte Mère</h4>
+                    <p>Micro-soudure et remplacement de puces CMS/CPU/GPU court-circuitées.</p>
                 </div>
                 <div class="service-item">
-                    <h4>🔬 Micro-Soudure</h4>
-                    <p style="font-size: 0.85rem;">Réparation de puces court-circuitées(CPU/GPU) et composants CMS sur la carte mère.</p>
+                    <h4>💡 Rétro-éclairage Laptop</h4>
+                    <p>Diagnostic et réparation des pannes d'affichage et d'écran noir.</p>
                 </div>
                 <div class="service-item">
-                    <h4>⚡ Appareils Électriques</h4>
-                    <p style="font-size: 0.85rem;">Diagnostic et réparation de divers équipements électriques.</p>
+                    <h4>🔋 Remplacement Batteries</h4>
+                    <p>Changement et reconditionnement de batteries d'ordinateurs portables.</p>
+                </div>
+                <div class="service-item">
+                    <h4>🖥️ Écrans Laptops</h4>
+                    <p>Remplacement rapide de dalles LCD/LED cassées ou défectueuses.</p>
                 </div>
             </div>
         </div>
 
-        <!-- Section 1 : Suivi de Réparation -->
+        <!-- SECTION : SERVICES SOFTWARE -->
+        <div class="card" id="services-sw">
+            <h3>SERVICES SOFTWARE</h3>
+            <div class="services-grid">
+                <div class="service-item">
+                    <h4>🔓 Déblocage Téléphone</h4>
+                    <p>Déverrouillage réseau et opérateurs pour tous types de mobiles.</p>
+                </div>
+                <div class="service-item">
+                    <h4>📲 Flashage Téléphones/Tablettes</h4>
+                    <p>Réinstallation de firmwares, correction de bugs et mises à jour.</p>
+                </div>
+                <div class="service-item">
+                    <h4>🛡️ Contournement Compte Google</h4>
+                    <p>Déblocage FRP / ID après réinitialisation d'usine.</p>
+                </div>
+                <div class="service-item">
+                    <h4>🍏 Bypass iCloud (iPhone X à 17 Pro Max)</h4>
+                    <p>Solutions de déblocage iCloud pour la gamme iPhone étendue.</p>
+                </div>
+                <div class="service-item">
+                    <h4>📺 Programmation Smart TV</h4>
+                    <p>Configuration, installation d'applications et mises à jour système.</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- SECTION : SERVICES DE CRÉDITS -->
+        <div class="card" id="services-credit">
+            <h3>CRÉDITS & BUREAU D'ÉCHANGE</h3>
+            <div class="services-grid">
+                <div class="service-item">
+                    <h4>💰 PRO-CRÉDIT S.A</h4>
+                    <p>Programme de financement : <strong>5 000 Gourdes</strong> attribuées chaque samedi (limité à 20 personnes).</p>
+                </div>
+                <div class="service-item">
+                    <h4>💱 Bureau d'Échange</h4>
+                    <p>Service de change rapide, sécurisé et au meilleur taux local.</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- SECTION : SUIVI DE RÉPARATION -->
         <div class="card" id="suivi">
             <h3>SUIVI DE RÉPARATION</h3>
-            <p style="margin-bottom: 1rem; font-size: 0.85rem; color: #666;">Veuillez Entrez le code figurant sur votre reçu pour vérifier l'état de votre appareil.</p>
-            
             <div class="form-group">
-                <label for="trackingCode">Code de Réparation (ex: PRO-000R)</label>
+                <label for="trackingCode">Code de Réparation (ex: PRO-101)</label>
                 <input type="text" id="trackingCode" placeholder="Saisissez votre code ici...">
             </div>
             <button id="btnCheck">Vérifier l'État de Votre Appareil</button>
-
             <div id="status-result"></div>
         </div>
 
-        <!-- Section 2 : Devis WhatsApp -->
+        <!-- SECTION : PAIEMENT EN LIGNE -->
+        <div class="card" id="paiement">
+            <h3>PAIEMENT SÉCURISÉ EN LIGNE</h3>
+            <div class="form-group">
+                <label for="payAmount">Montant à payer (HTG) :</label>
+                <input type="number" id="payAmount" placeholder="Ex: 1500" min="50">
+            </div>
+            <div class="form-group">
+                <label for="payRef">Numéro de Reçu ou Service :</label>
+                <input type="text" id="payRef" placeholder="Ex: PRO-101 ou Réparation Écran">
+            </div>
+
+            <p style="font-weight: 600; font-size: 0.95rem; margin-top: 1rem;">Choisissez votre mode de paiement :</p>
+            <button id="btnMonCash" class="btn-pay pay-btn-moncash">📲 Payer via MonCash API</button>
+            <button id="btnNatCash" class="btn-pay pay-btn-natcash">📲 Payer via NatCash</button>
+            <button id="btnCard" class="btn-pay pay-btn-card">💳 Carte Bancaire / Passerelle API</button>
+        </div>
+
+        <!-- SECTION : DEMANDE DE DEVIS -->
         <div class="card" id="devis">
             <h3>DEMANDE DE DEVIS RAPIDE</h3>
-            
             <div class="form-group">
-                <label for="deviceType">Type d'Appareil :</label>
+                <label for="deviceType">Type de Service / Appareil :</label>
                 <select id="deviceType">
-                    <option value="Smartphone">Smartphone</option>
-                    <option value="Laptop">Laptop</option>
-                    <option value="Tablette">Tablette / Ipad</option>
-                    <option value="Radio">Radio</option>
-                    <option value="Power bank">Power bank</option>
-                    <option value="Autre">Autre équipement</option>
+                    <option value="Laptop (Hardware)">Laptop / Ordinateur Portable</option>
+                    <option value="Smartphone (Hardware)">Smartphone (Changement pièce)</option>
+                    <option value="Software / Déblocage">Software / Déblocage / iCloud</option>
+                    <option value="Smart TV">Smart TV</option>
+                    <option value="Service Crédit / Échange">PRO-CRÉDIT S.A / Échange</option>
                 </select>
             </div>
-
-            <div class="form-group">
-                <label for="model">Marque et Modèle :</label>
-                <select id="model">
-                    <option value="Lenovo">Lenovo</option>
-                    <option value="Dell">Dell</option>
-                    <option value="Hp">Hp</option>
-                    <option value="Autre Marque Laptops">Autre Marque Laptops</option>
-                    <option value="Samsung">Samsung</option>
-                    <option value="Iphone">iphone</option>
-                    <option value="Motorola">Motorola</option>
-                    <option value="Autre Marque Smartphones">Autre Marque Smartphones</option>
-                    <option value="Autre">Autre</option>
-                </select>
-            </div>  
-
             <div class="form-group">
                 <label for="problem">Description du Problème :</label>
-                <textarea id="problem" rows="3" placeholder="ex: Écran cassé, problème de charge..."></textarea>
+                <textarea id="problem" rows="3" placeholder="ex: Écran cassé, blocage iCloud..."></textarea>
             </div>
-
             <a id="whatsappLink" href="#" class="btn-whatsapp">Demander un Devis via WhatsApp</a>
         </div>
 
-        <!-- Section 3 : Coordonnées et Horaires -->
+        <!-- SECTION : ADRESSE & CONTACT -->
         <div class="card" id="contact">
-            <h3>Adresse & Horaires</h3>
+            <h3>ADRESSE & CONTACT</h3>
             <ul class="info-list">
                 <li><strong>📍 Adresse :</strong> <span>Angle rue Lamarre et Leconte, à l'étage église baptiste philadelphie, Petit-Goâve Haïti.</span></li>
-                <li><strong>📞 Téléphone :</strong> <span>+50931241421/42282667</span></li>
+                <li><strong>📞 Téléphone :</strong> <span>+509 3124-1421 / +509 4228-2667</span></li>
                 <li><strong>✉️ Email :</strong> <span>protechnologie27@gmail.com</span></li>
-                <li><strong>🕒 Lundi - Ven :</strong> <span>9h00 - 17h00</span></li>
-                <li><strong>🕒 Samedi :</strong> <span>10h00 - 14h00</span></li>
-                <li><strong>🚫 Dimanche :</strong> <span>Fermé</span></li>
             </ul>
         </div>
 
     </div>
 
+    <!-- Bouton Flottant WhatsApp -->
+    <a href="https://wa.me/50931241421" class="floating-wa" target="_blank" title="Contactez-nous sur WhatsApp">💬</a>
+
     <footer>
-        <p>@ORIMA TMG| #Nahomie Charles| #Cadet Saint-Fleur| #Frantz Charles| &copy; 2026 PRO-TECHNOLOGIE. Tous droits réservés.</p>
+        <p>@ORIMA TMG | #Nahomie Charles | #Cadet Saint-Fleur | #Frantz Charles | &copy; 2026 PRO-TECHNOLOGIE. Tous droits réservés.</p>
     </footer>
 
     <script>
         const myPhoneNumber = "50931241421"; 
 
+        // Menu Latéral (Sidebar)
         const sidebar = document.getElementById("sidebar");
         const overlay = document.getElementById("overlay");
         const openMenu = document.getElementById("openMenu");
         const closeMenu = document.getElementById("closeMenu");
-        const navLinks = document.querySelectorAll(".nav-link");
 
         function toggleSidebar() {
             sidebar.classList.toggle("active");
@@ -497,54 +573,93 @@
         closeMenu.addEventListener("click", toggleSidebar);
         overlay.addEventListener("click", toggleSidebar);
 
-        navLinks.forEach(link => {
-            link.addEventListener("click", () => {
-                sidebar.classList.remove("active");
-                overlay.classList.remove("active");
+        // Dark Mode Toggle
+        const themeToggle = document.getElementById("themeToggle");
+        themeToggle.addEventListener("click", () => {
+            document.body.classList.toggle("dark-mode");
+            themeToggle.textContent = document.body.classList.contains("dark-mode") ? "☀️ Mode Clair" : "🌙 Mode Sombre";
+        });
+
+        // Recherche en direct
+        const searchInput = document.getElementById('searchInput');
+        searchInput.addEventListener('keyup', () => {
+            const input = searchInput.value.toLowerCase();
+            const serviceItems = document.querySelectorAll('.service-item');
+
+            serviceItems.forEach(item => {
+                const text = item.textContent.toLowerCase();
+                item.style.display = text.includes(input) ? "" : "none";
             });
         });
 
+        // Suivi de Réparation
         const repairDatabase = {
-            "PRO-003L": "Installation terminée : Monsieur POPO LOVE, votre d'installation windows 11 est terminée... 🤗🤗🤗!!!",
+           "PRO-003L": "Installation terminée : Monsieur POPO LOVE, votre d'installation windows 11 est terminée... 🤗🤗🤗!!!",
             "PRO-001": "Réparation terminée : Monsieur Jeff GÉDÉON, votre appareil idenfié au numéro suivant:DA0P9CMB6C0, est terminé...🤗🤗🤗 !!!",
             "PRO-002T": "En cours de diagnostic : Monsieur Paul Yves, votre appareil samsung A10e est au niveau d'inspection de la carte mère niveau 50%... Veuillez patientez !!!"
         };
-
-        document.getElementById("btnCheck").addEventListener("click", function() {
-            const inputVal = document.getElementById("trackingCode").value.trim().toUpperCase();
+        document.getElementById("btnCheck").addEventListener("click", () => {
+            const trackingInput = document.getElementById("trackingCode");
+            const inputVal = trackingInput ? trackingInput.value.trim().toUpperCase() : "";
             const resultDiv = document.getElementById("status-result");
 
             if (!inputVal) {
-                alert("Veuillez entrer un code valide!!!");
+                alert("Veuillez entrer un code valide !");
                 return;
             }
 
             resultDiv.style.display = "block";
             if (repairDatabase[inputVal]) {
                 resultDiv.className = "status-found";
-                resultDiv.style.color = "#25d366";
                 resultDiv.innerHTML = "<strong>Code : " + inputVal + "</strong><br>" + repairDatabase[inputVal];
             } else {
                 resultDiv.className = "status-found";
-                resultDiv.style.color = "#c0392b";
-                resultDiv.innerHTML = "<strong>Ce code n'existe pas dans notre base de données.</strong> Veuillez vérifier le reçu.";
+                resultDiv.innerHTML = "<strong>Ce code n'existe pas.</strong> Veuillez vérifier votre reçu.";
             }
         });
 
+        // Devis WhatsApp
         document.getElementById("whatsappLink").addEventListener("click", function(e) {
             const device = document.getElementById("deviceType").value;
-            const model = document.getElementById("model").value;
             const problem = document.getElementById("problem").value.trim();
 
             if (!problem) {
                 e.preventDefault();
-                alert("Veuillez décrire le problème avant d'envoyer la demande.");
+                alert("Veuillez décrire votre problème avant d'envoyer.");
                 return;
             }
 
-            const text = "Bonjour PRO-TECHNOLOGIE ! Je souhaite obtenir un devis pour :%0A- Appareil : " + encodeURIComponent(device) + "%0A- Marque : " + encodeURIComponent(model) + "%0A- Problème : " + encodeURIComponent(problem);
-            
+            const text = "Bonjour PRO-TECHNOLOGIE ! Je souhaite un devis :%0A- Service : " + encodeURIComponent(device) + "%0A- Description : " + encodeURIComponent(problem);
             this.href = "https://wa.me/" + myPhoneNumber + "?text=" + text;
+        });
+
+        // Paiements (Écouteurs d'événements JavaScript propres)
+        document.getElementById("btnMonCash").addEventListener("click", () => {
+            const amountInput = document.getElementById("payAmount");
+            const amount = amountInput ? amountInput.value : 0;
+            if (!amount || amount <= 0) {
+                alert("Veuillez saisir un montant valide.");
+                return;
+            }
+            window.location.href = "https://moncashbutton.digicelgroup.com/Moncash-middleware/Moneypay?merchantNum=" + myPhoneNumber + "&amount=" + amount;
+        });
+
+        document.getElementById("btnNatCash").addEventListener("click", () => {
+            const amountInput = document.getElementById("payAmount");
+            const refInput = document.getElementById("payRef");
+            const amount = amountInput ? amountInput.value : 0;
+            const ref = refInput && refInput.value ? refInput.value : "Service-PRO";
+
+            if (!amount || amount <= 0) {
+                alert("Veuillez saisir un montant valide.");
+                return;
+            }
+            const msg = "Bonjour, je souhaite effectuer un paiement NatCash de " + amount + " HTG pour la référence: " + ref;
+            window.location.href = "https://wa.me/" + myPhoneNumber + "?text=" + encodeURIComponent(msg);
+        });
+
+        document.getElementById("btnCard").addEventListener("click", () => {
+            alert("Module de paiement Carte Bancaire : Veuillez contacter la direction PRO-TECHNOLOGIE.");
         });
     </script>
 </body>
