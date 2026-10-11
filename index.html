@@ -633,16 +633,21 @@
             this.href = "https://wa.me/" + myPhoneNumber + "?text=" + text;
         });
 
-        // Paiements (Écouteurs d'événements JavaScript propres)
-        document.getElementById("btnMonCash").addEventListener("click", () => {
-            const amountInput = document.getElementById("payAmount");
-            const amount = amountInput ? amountInput.value : 0;
-            if (!amount || amount <= 0) {
-                alert("Veuillez saisir un montant valide.");
-                return;
-            }
-            window.location.href = "https://moncashbutton.digicelgroup.com/Moncash-middleware/Moneypay?merchantNum=" + myPhoneNumber + "&amount=" + amount;
-        });
+        // Correction du bouton MonCash pour éviter l'erreur 404
+document.getElementById("btnMonCash").addEventListener("click", () => {
+    const amountInput = document.getElementById("payAmount");
+    const refInput = document.getElementById("payRef");
+    const amount = amountInput ? amountInput.value : 0;
+    const ref = refInput && refInput.value ? refInput.value : "Service-PRO";
+
+    if (!amount || amount <= 0) {
+        alert("Veuillez saisir un montant valide.");
+        return;
+    }
+
+    const msg = "Bonjour PRO-TECHNOLOGIE ! Je souhaite effectuer un paiement MonCash de " + amount + " HTG pour le numéro/reçu : " + ref;
+    window.location.href = "https://wa.me/" + myPhoneNumber + "?text=" + encodeURIComponent(msg);
+});
 
         document.getElementById("btnNatCash").addEventListener("click", () => {
             const amountInput = document.getElementById("payAmount");
@@ -658,7 +663,7 @@
             window.location.href = "https://wa.me/" + myPhoneNumber + "?text=" + encodeURIComponent(msg);
         });
 
-        document.getElementById("btnCard").addEventListener("click", () => {
+        document.getElementById("btnC zbnb ard").addEventListener("click", () => {
             alert("Module de paiement Carte Bancaire : Veuillez contacter la direction PRO-TECHNOLOGIE.");
         });
     </script>
