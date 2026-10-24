@@ -156,7 +156,7 @@
             text-transform: uppercase;
         }
 
-        .photo-upload-zone {
+        .photo-display-zone {
             width: 140px;
             height: 140px;
             margin: 0 auto 1.2rem auto;
@@ -165,25 +165,17 @@
             overflow: hidden;
             position: relative;
             background-color: #2a2a2a;
-            cursor: pointer;
             display: flex;
             justify-content: center;
             align-items: center;
             box-shadow: 0 0 15px rgba(233, 184, 15, 0.3);
         }
 
-        .photo-upload-zone img {
+        .photo-display-zone img {
             width: 100%;
             height: 100%;
             object-fit: cover;
-            display: none;
-        }
-
-        .photo-placeholder {
-            color: var(--accent-gold);
-            font-size: 0.75rem;
-            padding: 10px;
-            text-align: center;
+            display: block;
         }
 
         .memorial-title {
@@ -243,7 +235,7 @@
             letter-spacing: 1px;
         }
 
-        /* CARTE DE LA VIDÉO / CHANSON TRISTE D'HOMMAGE (GRATUIT & SANS CODE) */
+        /* CARTE DE LA VIDÉO / CHANSON D'ED SHEERAN */
         .memorial-media-card {
             background: linear-gradient(145deg, #181818, #222222);
             border: 1px solid var(--accent-gold);
@@ -271,7 +263,7 @@
 
         .media-player-wrapper {
             position: relative;
-            padding-bottom: 56.25%; /* Ratio 16:9 */
+            padding-bottom: 56.25%;
             height: 0;
             overflow: hidden;
             border-radius: 8px;
@@ -753,7 +745,7 @@
     <!-- Texte Défilant -->
     <div class="scrolling-banner">
         <div class="scrolling-text">
-            EN MÉMOIRE ÉTERNELLE À NOTRE CHÈRE TANTE MARIE CLAIRE PIERRE-LOUIS 🕯️🕯️🕯️
+               EN MÉMOIRE ÉTERNELLE À NOTRE CHÈRE TANTE MARIE CLAIRE PIERRE-LOUIS 🕯️🕯️🕯️
         </div>
     </div>
 
@@ -761,26 +753,23 @@
 
         <!-- 1. SECTION HOMMAGE & MÉMORIAL DÉDIÉE À NOTRE TANTE -->
         <div class="memorial-card" id="memorial">
-            <div class="badge-hommage">🎗️ EN MÉMOIRE ÉTERNELLE</div>
+            <div class="badge-hommage">🎗️ EN MÉMOIRE ÉTERNELLE DE NOTRE CHÈRE TANTE ADORÉE</div>
             
-            <div class="photo-upload-zone" onclick="document.getElementById('memorialPhotoInput').click()">
-                <img id="memorialPreviewImage" alt="Photo Souvenir Tante">
-                <div class="photo-placeholder" id="memorialUploadPlaceholder">
-                    <a href="https://ibb.co/bjDh56cx"><img src="https://i.ibb.co/LDHwd0VM/Screenshot-20261024-092402-Gallery.jpg" alt="Screenshot-20261024-092402-Gallery" border="0"></a>
-                </div>
+            <!-- Photo officielle et définitive intégrée -->
+            <div class="photo-display-zone">
+                <a href="https://ibb.co/SD51xyvs"><img src="https://i.ibb.co/mrbYBTzD/Screenshot-20261024-092402-Gallery.jpg" alt="Screenshot-20261024-092402-Gallery" border="0"></a>
             </div>
-            <input type="file" id="memorialPhotoInput" accept="image/*" style="display: none;" onchange="loadMemorialPhoto(event)">
 
             <h2 class="memorial-title">Hommage & Souvenir</h2>
-            <p class="memorial-subtitle">À la mémoire de notre chère tante bien-aimée</p>
+            <p class="memorial-subtitle">À la mémoire de notre chère tante bien-aimée Marie-Claire PIERRE-LOUIS</p>
 
             <div class="memorial-dates">
-                ★ 29 Janvier 1954 — ✝ 20 Décembre 2026
+                ★ 19 janvier 1954 — ✝ 20 octobre 2026
             </div>
 
             <div class="memorial-text">
                 <p>
-                    C'est avec une profonde tristesse et un cœur rempli d'émotion que nous rendons hommage à notre chère tante, partie paisiblement après son opération.
+                    C'est avec une profonde tristesse et un cœur rempli d'émotion que nous rendons hommage à notre chère tante Marie-Claire PIERRE-LOUIS, partie paisiblement après son opération.
                 </p>
                 <p>
                     Son amour, sa générosité, sa sagesse et sa présence bienveillante resteront à jamais gravés dans nos mémoires et dans nos cœurs.
@@ -791,25 +780,29 @@
 
             <blockquote class="memorial-quote">
                 « Les mots sont insuffisants face à une telle épreuve, mais sachez que nous sommes de tout cœur avec vous dans cette triste circonstance. »
-              
-​— La Direction de PRO-TECHNOLOGIE & La Famille ( SAINT-FLEUR et ORIMA ) — »
             </blockquote>
 
             <div class="memorial-footer-text">
-                — La Famille —
+                — La Famille —  SAINT-FLEUR & ORIMA
             </div>
         </div>
 
-        <!-- 2. SECTION VIDÉO D'HOMMAGE (ED SHEERAN - SUPERMARKET FLOWERS) -->
+                <!-- CARTE DE LA VIDÉO YOUTUBE D'HOMMAGE -->
         <div class="memorial-media-card">
-            <h3>🎵 Musique & Vidéo de Souvenir</h3>
-            <p>Une mélodie pour honorer sa mémoire en toute sérénité</p>
+            <h3>🎵 Hommage & Souvenir</h3>
+            <p>Une pensée émouvante pour honorer la mémoire de Marie Claire PIERRE-LOUIS</p>
             
             <div class="media-player-wrapper">
-                <!-- Intégration de la chanson choisie : https://youtu.be/bIB8EWqCPrQ -->
-                <iframe src="https://www.youtube-nocookie.com/embed/bIB8EWqCPrQ?rel=0" title="Supermarket Flowers - Hommage" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                <iframe src="https://www.youtube.com/embed/x51NUZU7oVE" 
+                        title="Mémorial pour Marie Claire PIERRE-LOUIS" 
+                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
+                        allowfullscreen>
+                </iframe>
             </div>
         </div>
+
+</div>
+
 
         <!-- BARRE DE RECHERCHE -->
         <input type="text" id="searchInput" class="search-box" placeholder="🔍 Rechercher un service (ex: iCloud, écran, cours, MonCash)...">
@@ -1042,23 +1035,6 @@
     <script>
         const myPhoneNumber = "50931241421"; 
 
-        // FONCTION SPÉCIFIQUE : CHARGER LA PHOTO DE LA TANTE
-        function loadMemorialPhoto(event) {
-            const image = document.getElementById('memorialPreviewImage');
-            const placeholder = document.getElementById('memorialUploadPlaceholder');
-            const file = event.target.files[0];
-
-            if (file) {
-                const reader = new FileReader();
-                reader.onload = function(e) {
-                    image.src = e.target.result;
-                    image.style.display = 'block';
-                    placeholder.style.display = 'none';
-                }
-                reader.readAsDataURL(file);
-            }
-        }
-
         // 1. MENU LATÉRAL (SIDEBAR)
         const sidebar = document.getElementById("sidebar");
         const overlay = document.getElementById("overlay");
@@ -1271,6 +1247,8 @@
                 }
 
                 botDiv.innerHTML = reply;
+                chatMessages.appendChild(botDiv);
+                chatMessages.scrollTop = chatMessages.scrollHeight;
             }, 600);
         }
 
