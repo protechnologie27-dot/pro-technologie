@@ -156,7 +156,7 @@
             text-transform: uppercase;
         }
 
-        .photo-display-zone {
+        .photo-upload-zone {
             width: 140px;
             height: 140px;
             margin: 0 auto 1.2rem auto;
@@ -165,17 +165,25 @@
             overflow: hidden;
             position: relative;
             background-color: #2a2a2a;
+            cursor: pointer;
             display: flex;
             justify-content: center;
             align-items: center;
             box-shadow: 0 0 15px rgba(233, 184, 15, 0.3);
         }
 
-        .photo-display-zone img {
+        .photo-upload-zone img {
             width: 100%;
             height: 100%;
             object-fit: cover;
-            display: block;
+            display: none;
+        }
+
+        .photo-placeholder {
+            color: var(--accent-gold);
+            font-size: 0.75rem;
+            padding: 10px;
+            text-align: center;
         }
 
         .memorial-title {
@@ -235,7 +243,7 @@
             letter-spacing: 1px;
         }
 
-        /* CARTE DE LA VIDÉO / CHANSON D'ED SHEERAN */
+        /* CARTE DE LA VIDÉO / CHANSON TRISTE D'HOMMAGE (GRATUIT & SANS CODE) */
         .memorial-media-card {
             background: linear-gradient(145deg, #181818, #222222);
             border: 1px solid var(--accent-gold);
@@ -263,7 +271,7 @@
 
         .media-player-wrapper {
             position: relative;
-            padding-bottom: 56.25%;
+            padding-bottom: 56.25%; /* Ratio 16:9 */
             height: 0;
             overflow: hidden;
             border-radius: 8px;
@@ -745,7 +753,7 @@
     <!-- Texte Défilant -->
     <div class="scrolling-banner">
         <div class="scrolling-text">
-            Bienvenue chez PRO-TECHNOLOGIE ! Nous mettons notre savoir-faire technique au service de vos équipements. Profitez d'une prise en charge rapide et d'un service garanti en toute sérénité. Ravis de vous accueillir !!! 🤝
+            EN MÉMOIRE ÉTERNELLE À NOTRE CHÈRE TANTE MARIE CLAIRE PIERRE-LOUIS 🕯️🕯️🕯️
         </div>
     </div>
 
@@ -753,23 +761,26 @@
 
         <!-- 1. SECTION HOMMAGE & MÉMORIAL DÉDIÉE À NOTRE TANTE -->
         <div class="memorial-card" id="memorial">
-            <div class="badge-hommage">🎗️ EN MÉMOIRE ÉTERNELLE DE NOTRE CHÈRE TANTE ADORÉE</div>
+            <div class="badge-hommage">🎗️ EN MÉMOIRE ÉTERNELLE</div>
             
-            <!-- Photo officielle et définitive intégrée -->
-            <div class="photo-display-zone">
-                <img src="tante.jpg" alt="Photo de notre chère tante">
+            <div class="photo-upload-zone" onclick="document.getElementById('memorialPhotoInput').click()">
+                <img id="memorialPreviewImage" alt="Photo Souvenir Tante">
+                <div class="photo-placeholder" id="memorialUploadPlaceholder">
+                    <img src="https://ibb.co/bjDh56cx" alt="Description de ma photo">
+                </div>
             </div>
+            <input type="file" id="memorialPhotoInput" accept="image/*" style="display: none;" onchange="loadMemorialPhoto(event)">
 
             <h2 class="memorial-title">Hommage & Souvenir</h2>
-            <p class="memorial-subtitle">À la mémoire de notre chère tante bien-aimée Marie-Claire PIERRE-LOUIS</p>
+            <p class="memorial-subtitle">À la mémoire de notre chère tante bien-aimée</p>
 
             <div class="memorial-dates">
-                ★ 19 janvier 1954 — ✝ 20 octobre 2026
+                ★ 29 Janvier 1954 — ✝ 20 Décembre 2026
             </div>
 
             <div class="memorial-text">
                 <p>
-                    C'est avec une profonde tristesse et un cœur rempli d'émotion que nous rendons hommage à notre chère tante Marie-Claire PIERRE-LOUIS, partie paisiblement après son opération.
+                    C'est avec une profonde tristesse et un cœur rempli d'émotion que nous rendons hommage à notre chère tante, partie paisiblement après son opération.
                 </p>
                 <p>
                     Son amour, sa générosité, sa sagesse et sa présence bienveillante resteront à jamais gravés dans nos mémoires et dans nos cœurs.
@@ -779,34 +790,26 @@
             <div class="candle-icon">🕯️</div>
 
             <blockquote class="memorial-quote">
-                « Ceux que nous avons aimés et qui nous quittent ne sont plus là où ils étaient, mais ils sont partout où nous sommes. »
+                « Les mots sont insuffisants face à une telle épreuve, mais sachez que nous sommes de tout cœur avec vous dans cette triste circonstance. »
+              
+​— La Direction de PRO-TECHNOLOGIE & La Famille ( SAINT-FLEUR et ORIMA ) — »
             </blockquote>
 
             <div class="memorial-footer-text">
                 — La Famille —
-              ​À tous ceux qui sont touchés par ce deuil,
-​C'est avec un cœur lourd mais rempli d'une profonde gratitude pour sa vie que mes frères, mes sœurs et moi-même vous adressons ces quelques mots.
-​La perte de notre chère tante laisse un vide immense dans nos cœurs et dans notre famille. En ces moments de douleur partagée, nous tenons à vous exprimer toute notre affection et notre soutien le plus sincère.
-​Nous savons à quel point elle a marqué la vie de chacune des personnes qui ont eu le privilège de la connaître. Sa bienveillance, sa gentillesse et son sourire resteront à jamais gravés dans nos mémoires.
-​Puisse le doux souvenir de sa présence apporter de la paix et du réconfort à chacun d'entre nous. Restons unis dans l'amour et le souvenir qu'elle nous laisse en héritage.
-​Avec toute notre affection et notre sympathie,
-​— Ses neveux et nièces —
             </div>
         </div>
 
+        <!-- 2. SECTION VIDÉO D'HOMMAGE (ED SHEERAN - SUPERMARKET FLOWERS) -->
         <div class="memorial-media-card">
-    <h3>🎵 Hommage & Souvenir</h3>
-    <p>Une pensée émouvante pour honorer la mémoire de Marie Claire PIERRE-LOUIS</p>
-    
-    <div class="media-player-wrapper">
-        <iframe src="https://player.vimeo.com/video/1238990976?badge=0&autopause=0&player_id=0&app_id=58479" 
-                allow="autoplay; fullscreen; picture-in-picture" 
-                allowfullscreen 
-                title="Hommage Marie Claire PIERRE-LOUIS">
-        </iframe>
-    </div>
-</div>
-
+            <h3>🎵 Musique & Vidéo de Souvenir</h3>
+            <p>Une mélodie pour honorer sa mémoire en toute sérénité</p>
+            
+            <div class="media-player-wrapper">
+                <!-- Intégration de la chanson choisie : https://youtu.be/bIB8EWqCPrQ -->
+                <iframe src="https://www.youtube-nocookie.com/embed/bIB8EWqCPrQ?rel=0" title="Supermarket Flowers - Hommage" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+            </div>
+        </div>
 
         <!-- BARRE DE RECHERCHE -->
         <input type="text" id="searchInput" class="search-box" placeholder="🔍 Rechercher un service (ex: iCloud, écran, cours, MonCash)...">
@@ -1039,6 +1042,23 @@
     <script>
         const myPhoneNumber = "50931241421"; 
 
+        // FONCTION SPÉCIFIQUE : CHARGER LA PHOTO DE LA TANTE
+        function loadMemorialPhoto(event) {
+            const image = document.getElementById('memorialPreviewImage');
+            const placeholder = document.getElementById('memorialUploadPlaceholder');
+            const file = event.target.files[0];
+
+            if (file) {
+                const reader = new FileReader();
+                reader.onload = function(e) {
+                    image.src = e.target.result;
+                    image.style.display = 'block';
+                    placeholder.style.display = 'none';
+                }
+                reader.readAsDataURL(file);
+            }
+        }
+
         // 1. MENU LATÉRAL (SIDEBAR)
         const sidebar = document.getElementById("sidebar");
         const overlay = document.getElementById("overlay");
@@ -1251,8 +1271,6 @@
                 }
 
                 botDiv.innerHTML = reply;
-                chatMessages.appendChild(botDiv);
-                chatMessages.scrollTop = chatMessages.scrollHeight;
             }, 600);
         }
 
