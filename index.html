@@ -3,7 +3,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>PRO-TECHNOLOGIE@ | Centre de Réparation Électronique</title>
+    <title>PRO-TECHNOLOGIE@ | Centre de Réparation Électronique & Formations</title>
+    <!-- Icônes Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
         :root {
             --bg-primary: linear-gradient(135deg, #f0f4f8 0%, #e2e8f0 100%);
@@ -13,6 +15,8 @@
             --accent-gold: #E9B80F;
             --accent-blue: #00a8ff;
             --border-color: #e2e8f0;
+            --accent-red: #e74c3c;
+            --accent-green: #2ecc71;
         }
 
         body.dark-mode {
@@ -29,6 +33,9 @@
             padding: 0;
             font-family: 'Segoe UI', Roboto, sans-serif;
             scroll-behavior: smooth;
+            -webkit-user-select: none;
+            -ms-user-select: none;
+            user-select: none;
         }
 
         body {
@@ -57,6 +64,12 @@
             display: flex;
             align-items: center;
             gap: 0.4rem;
+        }
+
+        .header-right {
+            display: flex;
+            align-items: center;
+            gap: 0.8rem;
         }
 
         .menu-btn {
@@ -116,6 +129,155 @@
         @keyframes marquee {
             0% { transform: translate(0, 0); }
             100% { transform: translate(-100%, 0); }
+        }
+
+        /* STYLES SPÉCIFIQUES POUR LA SECTION MÉMORIAL TANTE */
+        .memorial-card {
+            background: linear-gradient(145deg, #1e1e1e, #282828);
+            border: 2px solid var(--accent-gold);
+            border-radius: 12px;
+            padding: 2rem 1.5rem;
+            text-align: center;
+            box-shadow: 0 8px 25px rgba(0,0,0,0.5);
+            color: #e2e8f0;
+            position: relative;
+        }
+
+        .badge-hommage {
+            display: inline-block;
+            border: 1px solid var(--accent-gold);
+            color: var(--accent-gold);
+            padding: 4px 14px;
+            border-radius: 20px;
+            font-size: 0.75rem;
+            letter-spacing: 2px;
+            margin-bottom: 1.2rem;
+            font-weight: bold;
+            text-transform: uppercase;
+        }
+
+        .photo-display-zone {
+            width: 140px;
+            height: 140px;
+            margin: 0 auto 1.2rem auto;
+            border-radius: 50%;
+            border: 3px solid var(--accent-gold);
+            overflow: hidden;
+            position: relative;
+            background-color: #2a2a2a;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            box-shadow: 0 0 15px rgba(233, 184, 15, 0.3);
+        }
+
+        .photo-display-zone img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+        }
+
+        .memorial-title {
+            color: var(--accent-gold);
+            font-size: 1.7rem;
+            margin-bottom: 0.3rem;
+            font-family: 'Georgia', serif;
+            font-weight: normal;
+        }
+
+        .memorial-subtitle {
+            color: #a0a0a0;
+            font-style: italic;
+            font-size: 0.95rem;
+            margin-bottom: 0.8rem;
+            font-family: 'Georgia', serif;
+        }
+
+        .memorial-dates {
+            font-size: 1.1rem;
+            color: var(--accent-gold);
+            letter-spacing: 2px;
+            margin: 0.8rem 0 1.2rem 0;
+            font-family: 'Georgia', serif;
+        }
+
+        .memorial-text {
+            font-family: 'Georgia', serif;
+            line-height: 1.7;
+            font-size: 0.95rem;
+            color: #d0d0d0;
+            margin-bottom: 1.2rem;
+        }
+
+        .memorial-text p { margin-bottom: 0.8rem; }
+
+        .candle-icon {
+            font-size: 2rem;
+            margin: 1rem 0 0.2rem 0;
+        }
+
+        .memorial-quote {
+            font-family: 'Georgia', serif;
+            font-style: italic;
+            color: #a0a0a0;
+            border-top: 1px solid var(--border-color);
+            border-bottom: 1px solid var(--border-color);
+            padding: 0.8rem;
+            margin: 1.2rem 0;
+            font-size: 0.85rem;
+        }
+
+        .memorial-footer-text {
+            font-family: 'Georgia', serif;
+            color: var(--accent-gold);
+            font-weight: bold;
+            letter-spacing: 1px;
+        }
+
+        /* CARTE DE LA VIDÉO / CHANSON D'ED SHEERAN */
+        .memorial-media-card {
+            background: linear-gradient(145deg, #181818, #222222);
+            border: 1px solid var(--accent-gold);
+            border-radius: 12px;
+            padding: 1.2rem;
+            text-align: center;
+            box-shadow: 0 6px 20px rgba(0,0,0,0.4);
+            color: #e2e8f0;
+        }
+
+        .memorial-media-card h3 {
+            color: var(--accent-gold);
+            font-family: 'Georgia', serif;
+            font-size: 1.15rem;
+            margin-bottom: 0.4rem;
+            font-weight: normal;
+        }
+
+        .memorial-media-card p {
+            font-size: 0.85rem;
+            color: #aaa;
+            margin-bottom: 1rem;
+            font-style: italic;
+        }
+
+        .media-player-wrapper {
+            position: relative;
+            padding-bottom: 56.25%;
+            height: 0;
+            overflow: hidden;
+            border-radius: 8px;
+            border: 1px solid #333;
+            background-color: #000;
+        }
+
+        .media-player-wrapper iframe {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            border: 0;
         }
 
         /* Menu Latéral */
@@ -320,14 +482,69 @@
             transition: transform 0.3s ease;
         }
 
-        .floating-wa:hover {
-            transform: scale(1.1);
-        }
+        .floating-wa:hover { transform: scale(1.1); }
 
         /* Méthodes de paiement */
         .pay-btn-moncash { background-color: #e11d48; margin-top: 0.5rem; }
         .pay-btn-natcash { background-color: #F5820D; margin-top: 0.5rem; }
         .pay-btn-card { background-color: #300030; margin-top: 0.5rem; }
+
+        /* Section Formations Vidéo */
+        .lock-box {
+            background: rgba(0, 168, 255, 0.05);
+            border: 2px dashed var(--accent-blue);
+            border-radius: 10px;
+            padding: 1.5rem;
+            text-align: center;
+        }
+
+        .video-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+            gap: 1.2rem;
+            margin-top: 1.2rem;
+        }
+
+        .video-card {
+            background: var(--card-bg);
+            border-radius: 8px;
+            padding: 1rem;
+            border: 1px solid var(--border-color);
+        }
+
+        .video-card h4 {
+            margin-bottom: 0.8rem;
+            font-size: 0.95rem;
+            color: var(--text-color);
+        }
+
+        .iframe-wrapper {
+            position: relative;
+            padding-bottom: 56.25%;
+            height: 0;
+            overflow: hidden;
+            border-radius: 6px;
+            background-color: #000;
+        }
+
+        .iframe-wrapper iframe {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            border: 0;
+        }
+
+        .video-protection-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 5;
+            background: transparent;
+        }
 
         #status-result {
             margin-top: 1rem;
@@ -351,6 +568,130 @@
             font-size: 0.9rem;
         }
 
+        /* STYLES DU CHATBOT ASSISTANT VIRTUEL */
+        .chatbot-btn {
+            position: fixed;
+            bottom: 85px;
+            right: 20px;
+            background-color: var(--header-bg);
+            color: var(--accent-gold);
+            border: 2px solid var(--accent-gold);
+            width: 55px;
+            height: 55px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.3);
+            cursor: pointer;
+            z-index: 999;
+            transition: transform 0.3s ease;
+        }
+
+        .chatbot-btn:hover { transform: scale(1.1); }
+
+        .chatbot-window {
+            position: fixed;
+            bottom: 150px;
+            right: 20px;
+            width: 320px;
+            max-width: 90vw;
+            height: 420px;
+            background: var(--card-bg);
+            border: 2px solid var(--accent-gold);
+            border-radius: 12px;
+            box-shadow: 0 5px 25px rgba(0,0,0,0.3);
+            display: none;
+            flex-direction: column;
+            z-index: 1000;
+            overflow: hidden;
+        }
+
+        .chatbot-window.active { display: flex; }
+
+        .chatbot-header {
+            background: var(--header-bg);
+            color: white;
+            padding: 0.8rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 1px solid var(--accent-gold);
+        }
+
+        .chatbot-header h4 {
+            font-size: 0.95rem;
+            color: var(--accent-gold);
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .chatbot-close {
+            background: none;
+            border: none;
+            color: white;
+            font-size: 1.2rem;
+            cursor: pointer;
+        }
+
+        .chatbot-messages {
+            flex: 1;
+            padding: 0.8rem;
+            overflow-y: auto;
+            display: flex;
+            flex-direction: column;
+            gap: 0.6rem;
+            font-size: 0.85rem;
+        }
+
+        .chat-msg {
+            padding: 0.6rem 0.8rem;
+            border-radius: 8px;
+            max-width: 85%;
+            line-height: 1.4;
+        }
+
+        .chat-msg.bot {
+            background: rgba(0, 168, 255, 0.1);
+            color: var(--text-color);
+            border-left: 3px solid var(--accent-blue);
+            align-self: flex-start;
+        }
+
+        .chat-msg.user {
+            background: var(--accent-blue);
+            color: white;
+            align-self: flex-end;
+        }
+
+        .chatbot-input-area {
+            display: flex;
+            padding: 0.5rem;
+            border-top: 1px solid var(--border-color);
+            background: var(--card-bg);
+        }
+
+        .chatbot-input-area input {
+            flex: 1;
+            padding: 0.5rem;
+            border: 1px solid var(--border-color);
+            border-radius: 4px;
+            outline: none;
+            font-size: 0.85rem;
+            background: var(--card-bg);
+            color: var(--text-color);
+        }
+
+        .chatbot-input-area button {
+            width: auto;
+            padding: 0.5rem 0.8rem;
+            margin-left: 0.4rem;
+            background: var(--accent-blue);
+            font-size: 0.85rem;
+        }
+
         footer {
             text-align: center;
             padding: 1.5rem;
@@ -361,7 +702,7 @@
         }
     </style>
 </head>
-<body>
+<body oncontextmenu="return false;">
 
     <!-- Menu Latéral -->
     <div class="sidebar" id="sidebar">
@@ -372,14 +713,15 @@
         <nav>
             <ul>
                 <li><a href="#accueil" class="nav-link">Accueil</a></li>
+                <li><a href="#memorial" class="nav-link">🎗️ Hommage & Mémorial</a></li>
                 <li><a href="#apropos" class="nav-link">À Propos</a></li>
                 <li><a href="#services-hw" class="nav-link">Services Hardware</a></li>
                 <li><a href="#services-sw" class="nav-link">Services Software</a></li>
+                <li><a href="#formations" class="nav-link">Cours & Formations Vidéo</a></li>
                 <li><a href="#services-credit" class="nav-link">Crédit & Échange</a></li>
                 <li><a href="#suivi" class="nav-link">Suivi de Réparation</a></li>
                 <li><a href="#paiement" class="nav-link">Paiement En Ligne</a></li>
                 <li><a href="#devis" class="nav-link">Demander un Devis</a></li>
-                <li><a href="#avis" class="nav-link">Avis Clients</a></li>
                 <li><a href="#contact" class="nav-link">Adresse & Contact</a></li>
             </ul>
         </nav>
@@ -395,28 +737,85 @@
                 <span class="logo-pro">PRO-</span><span class="logo-tech">TECHN</span><span class="logo-ologie">OLOGIE</span>
             </h1>
         </div>
-        <button class="theme-toggle" id="themeToggle">🌙 Mode Sombre</button>
+        <div class="header-right">
+            <button class="theme-toggle" id="themeToggle">🌙 Mode Sombre</button>
+        </div>
     </header>
 
     <!-- Texte Défilant -->
     <div class="scrolling-banner">
         <div class="scrolling-text">
-            Bienvenue chez PRO-TECHNOLOGIE ! Nous mettons notre savoir-faire technique au service de vos équipements. Profitez d'une prise en charge rapide et d'un service garanti en toute sérénité.
-
-​Ravis de vous accueillir !!! 🤝
+            Bienvenue chez PRO-TECHNOLOGIE ! Nous mettons notre savoir-faire technique au service de vos équipements. Profitez d'une prise en charge rapide et d'un service garanti en toute sérénité. Ravis de vous accueillir !!! 🤝
         </div>
     </div>
 
     <div class="container">
 
+        <!-- 1. SECTION HOMMAGE & MÉMORIAL DÉDIÉE À NOTRE TANTE -->
+        <div class="memorial-card" id="memorial">
+            <div class="badge-hommage">🎗️ EN MÉMOIRE ÉTERNELLE DE NOTRE CHÈRE TANTE ADORÉE</div>
+            
+            <!-- Photo officielle et définitive intégrée -->
+            <div class="photo-display-zone">
+                <img src="tante.jpg" alt="Photo de notre chère tante">
+            </div>
+
+            <h2 class="memorial-title">Hommage & Souvenir</h2>
+            <p class="memorial-subtitle">À la mémoire de notre chère tante bien-aimée Marie-Claire PIERRE-LOUIS</p>
+
+            <div class="memorial-dates">
+                ★ 19 janvier 1954 — ✝ 20 octobre 2026
+            </div>
+
+            <div class="memorial-text">
+                <p>
+                    C'est avec une profonde tristesse et un cœur rempli d'émotion que nous rendons hommage à notre chère tante Marie-Claire PIERRE-LOUIS, partie paisiblement après son opération.
+                </p>
+                <p>
+                    Son amour, sa générosité, sa sagesse et sa présence bienveillante resteront à jamais gravés dans nos mémoires et dans nos cœurs.
+                </p>
+            </div>
+
+            <div class="candle-icon">🕯️</div>
+
+            <blockquote class="memorial-quote">
+                « Ceux que nous avons aimés et qui nous quittent ne sont plus là où ils étaient, mais ils sont partout où nous sommes. »
+            </blockquote>
+
+            <div class="memorial-footer-text">
+                — La Famille —
+              ​À tous ceux qui sont touchés par ce deuil,
+​C'est avec un cœur lourd mais rempli d'une profonde gratitude pour sa vie que mes frères, mes sœurs et moi-même vous adressons ces quelques mots.
+​La perte de notre chère tante laisse un vide immense dans nos cœurs et dans notre famille. En ces moments de douleur partagée, nous tenons à vous exprimer toute notre affection et notre soutien le plus sincère.
+​Nous savons à quel point elle a marqué la vie de chacune des personnes qui ont eu le privilège de la connaître. Sa bienveillance, sa gentillesse et son sourire resteront à jamais gravés dans nos mémoires.
+​Puisse le doux souvenir de sa présence apporter de la paix et du réconfort à chacun d'entre nous. Restons unis dans l'amour et le souvenir qu'elle nous laisse en héritage.
+​Avec toute notre affection et notre sympathie,
+​— Ses neveux et nièces —
+            </div>
+        </div>
+
+        <div class="memorial-media-card">
+    <h3>🎵 Hommage & Souvenir</h3>
+    <p>Une pensée émouvante pour honorer la mémoire de Marie Claire PIERRE-LOUIS</p>
+    
+    <div class="media-player-wrapper">
+        <iframe src="https://player.vimeo.com/video/1238990976?badge=0&autopause=0&player_id=0&app_id=58479" 
+                allow="autoplay; fullscreen; picture-in-picture" 
+                allowfullscreen 
+                title="Hommage Marie Claire PIERRE-LOUIS">
+        </iframe>
+    </div>
+</div>
+
+
         <!-- BARRE DE RECHERCHE -->
-        <input type="text" id="searchInput" class="search-box" placeholder="🔍 Rechercher un service (ex: iCloud, écran, MonCash)...">
+        <input type="text" id="searchInput" class="search-box" placeholder="🔍 Rechercher un service (ex: iCloud, écran, cours, MonCash)...">
 
         <!-- SECTION : À PROPOS -->
         <div class="card" id="apropos">
             <h3>À PROPOS DE NOUS</h3>
             <p style="font-size: 0.95rem; line-height: 1.6;">
-                <strong>PRO-TECHNOLOGIE</strong> est votre centre de réparation technique spécialisé à Petit-Goâve. Nous offrons des solutions de pointe en maintenance matérielle (Hardware), diagnostic sur carte mère, déblocage logiciel (Software), ainsi que des services financiers (PRO-CRÉDIT S.A, MonCash, NatCash et bureau d'échange).
+                <strong>PRO-TECHNOLOGIE</strong> est votre centre de réparation technique spécialisé à Petit-Goâve. Nous offrons des solutions de pointe en maintenance matérielle (Hardware), diagnostic sur carte mère, déblocage logiciel (Software), des formations techniques, ainsi que des services financiers (PRO-CRÉDIT S.A, MonCash, NatCash et bureau d'échange).
             </p>
         </div>
 
@@ -474,6 +873,61 @@
             </div>
         </div>
 
+        <!-- SECTION : COURS & FORMATIONS VIDÉO VERROUILLÉES -->
+        <div class="card" id="formations">
+            <h3>🎓 COURS & FORMATIONS EN LIGNE</h3>
+            <p style="font-size: 0.9rem; margin-bottom: 1rem;">
+                Visionnez nos cours pratiques sur la réparation matérielle et les techniques de déblocage Software.
+            </p>
+
+            <!-- ÉCRAN DE VERROUILLAGE PAR CODE -->
+            <div id="lockScreen" class="lock-box">
+                <i class="fa-solid fa-lock" style="font-size: 2.2rem; color: var(--accent-blue); margin-bottom: 0.5rem;"></i>
+                <h4 style="margin-bottom: 0.5rem; color: var(--text-color);">Espace Réservé aux Élèves & Participants</h4>
+                <p style="font-size: 0.85rem; opacity: 0.85; margin-bottom: 1rem;">
+                    Saisissez votre code d'accès reçu après votre paiement via MonCash ou NatCash pour débloquer les vidéos.
+                </p>
+
+                <div style="max-width: 320px; margin: 0 auto;">
+                    <div class="form-group">
+                        <input type="password" id="accessCodeInput" placeholder="Saisissez votre code ici..." style="text-align: center; font-weight: bold; letter-spacing: 2px;">
+                    </div>
+                    <button id="btnUnlockCode">Déverrouiller les Cours</button>
+                </div>
+                
+                <p id="errorMsg" style="color: var(--accent-red); display: none; margin-top: 0.8rem; font-weight: bold; font-size: 0.85rem;">
+                    ❌ Code d'accès incorrect. Veuillez contacter PRO-TECHNOLOGIE sur WhatsApp après votre paiement.
+                </p>
+            </div>
+
+            <!-- CONTENU VIDÉO SÉCURISÉ (DÉVERROUILLÉ APRÈS CODE) -->
+            <div id="videoContainer" style="display: none;">
+                <div style="background-color: rgba(46, 204, 113, 0.15); color: var(--accent-green); border: 1px solid var(--accent-green); padding: 0.8rem; border-radius: 6px; margin-bottom: 1rem; text-align: center; font-weight: bold; font-size: 0.9rem;">
+                    ✅ Accès Accordé ! Bon visionnage de vos formations.
+                </div>
+
+                <div class="video-grid">
+                    
+                    <div class="video-card">
+                        <h4>1. Micro-Soudure & Carte Mère (Niveau 1)</h4>
+                        <div class="iframe-wrapper">
+                            <div class="video-protection-overlay"></div>
+                            <iframe src="https://player.vimeo.com/video/1237213725?badge=0&autopause=0&player_id=0&app_id=58479" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen></iframe>
+                        </div>
+                    </div>
+
+                    <div class="video-card">
+                        <h4>2. Déblocage Software, Flash & FRP</h4>
+                        <div class="iframe-wrapper">
+                            <div class="video-protection-overlay"></div>
+                            <iframe src="https://player.vimeo.com/video/76979871?h=8272103f6e&title=0&byline=0&portrait=0" allow="autoplay; fullscreen" allowfullscreen></iframe>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+
         <!-- SECTION : SERVICES DE CRÉDITS -->
         <div class="card" id="services-credit">
             <h3>CRÉDITS & BUREAU D'ÉCHANGE</h3>
@@ -508,12 +962,12 @@
                 <input type="number" id="payAmount" placeholder="Ex: 1500" min="50">
             </div>
             <div class="form-group">
-                <label for="payRef">Numéro de Reçu ou Service :</label>
-                <input type="text" id="payRef" placeholder="Ex: PRO-101 ou Réparation Écran">
+                <label for="payRef">Numéro de Reçu ou Service / Cours :</label>
+                <input type="text" id="payRef" placeholder="Ex: PRO-101 ou Cours Software">
             </div>
 
             <p style="font-weight: 600; font-size: 0.95rem; margin-top: 1rem;">Choisissez votre mode de paiement :</p>
-            <button id="btnMonCash" class="btn-pay pay-btn-moncash">📲 Payer via MonCash API</button>
+            <button id="btnMonCash" class="btn-pay pay-btn-moncash">📲 Payer via MonCash</button>
             <button id="btnNatCash" class="btn-pay pay-btn-natcash">📲 Payer via NatCash</button>
             <button id="btnCard" class="btn-pay pay-btn-card">💳 Carte Bancaire / Passerelle API</button>
         </div>
@@ -522,18 +976,19 @@
         <div class="card" id="devis">
             <h3>DEMANDE DE DEVIS RAPIDE</h3>
             <div class="form-group">
-                <label for="deviceType">Type de Service / Appareil :</label>
+                <label for="deviceType">Type de Service / Appareil / Formation :</label>
                 <select id="deviceType">
                     <option value="Laptop (Hardware)">Laptop / Ordinateur Portable</option>
                     <option value="Smartphone (Hardware)">Smartphone (Changement pièce)</option>
                     <option value="Software / Déblocage">Software / Déblocage / iCloud</option>
+                    <option value="Formation en ligne">Inscription Formation / Cours</option>
                     <option value="Smart TV">Smart TV</option>
                     <option value="Service Crédit / Échange">PRO-CRÉDIT S.A / Échange</option>
                 </select>
             </div>
             <div class="form-group">
-                <label for="problem">Description du Problème :</label>
-                <textarea id="problem" rows="3" placeholder="ex: Écran cassé, blocage iCloud..."></textarea>
+                <label for="problem">Description du Problème / Demande :</label>
+                <textarea id="problem" rows="3" placeholder="ex: Écran cassé, inscription au cours software..."></textarea>
             </div>
             <a id="whatsappLink" href="#" class="btn-whatsapp">Demander un Devis via WhatsApp</a>
         </div>
@@ -550,6 +1005,29 @@
 
     </div>
 
+    <!-- BOUTON FLOTTANT DU CHATBOT ASSISTANT VIRTUEL -->
+    <div class="chatbot-btn" id="openChatbot" title="Besoin d'aide ? Discutez avec l'assistant !">
+        <i class="fa-solid fa-robot"></i>
+    </div>
+
+    <!-- FENÊTRE DU CHATBOT INTERACTIF -->
+    <div class="chatbot-window" id="chatbotWindow">
+        <div class="chatbot-header">
+            <h4><i class="fa-solid fa-robot"></i> Assistant PRO-TECH</h4>
+            <button class="chatbot-close" id="closeChatbot">&times;</button>
+        </div>
+        <div class="chatbot-messages" id="chatMessages">
+            <div class="chat-msg bot">
+                Bonjour ! 🤝 Je suis l'assistant virtuel de <strong>PRO-TECHNOLOGIE</strong>.<br><br>
+                Comment puis-je vous aider ? Vous pouvez me poser des questions sur nos <em>formations</em>, nos <em>tarifs</em>, <em>MonCash/NatCash</em>, ou le <em>suivi de réparation</em> !
+            </div>
+        </div>
+        <div class="chatbot-input-area">
+            <input type="text" id="chatInput" placeholder="Posez votre question ici...">
+            <button id="sendChatBtn"><i class="fa-solid fa-paper-plane"></i></button>
+        </div>
+    </div>
+
     <!-- Bouton Flottant WhatsApp -->
     <a href="https://wa.me/50931241421" class="floating-wa" target="_blank" title="Contactez-nous sur WhatsApp">💬</a>
 
@@ -557,118 +1035,247 @@
         <p> #ORIMA TMG | #Nahomie Charles | &copy; 2026 PRO-TECHNOLOGIE. Tous droits réservés.</p>
     </footer>
 
+    <!-- SCRIPTS JAVASCRIPT & SÉCURITÉ -->
     <script>
         const myPhoneNumber = "50931241421"; 
 
-        // Menu Latéral (Sidebar)
+        // 1. MENU LATÉRAL (SIDEBAR)
         const sidebar = document.getElementById("sidebar");
         const overlay = document.getElementById("overlay");
         const openMenu = document.getElementById("openMenu");
         const closeMenu = document.getElementById("closeMenu");
 
         function toggleSidebar() {
-            sidebar.classList.toggle("active");
-            overlay.classList.toggle("active");
+            if (sidebar) sidebar.classList.toggle("active");
+            if (overlay) overlay.classList.toggle("active");
         }
 
-        openMenu.addEventListener("click", toggleSidebar);
-        closeMenu.addEventListener("click", toggleSidebar);
-        overlay.addEventListener("click", toggleSidebar);
+        if (openMenu) openMenu.addEventListener("click", toggleSidebar);
+        if (closeMenu) closeMenu.addEventListener("click", toggleSidebar);
+        if (overlay) overlay.addEventListener("click", toggleSidebar);
 
-        // Dark Mode Toggle
-        const themeToggle = document.getElementById("themeToggle");
-        themeToggle.addEventListener("click", () => {
-            document.body.classList.toggle("dark-mode");
-            themeToggle.textContent = document.body.classList.contains("dark-mode") ? "☀️ Mode Clair" : "🌙 Mode Sombre";
-        });
-
-        // Recherche en direct
-        const searchInput = document.getElementById('searchInput');
-        searchInput.addEventListener('keyup', () => {
-            const input = searchInput.value.toLowerCase();
-            const serviceItems = document.querySelectorAll('.service-item');
-
-            serviceItems.forEach(item => {
-                const text = item.textContent.toLowerCase();
-                item.style.display = text.includes(input) ? "" : "none";
+        document.querySelectorAll('.nav-link').forEach(link => {
+            link.addEventListener('click', () => {
+                if (sidebar && sidebar.classList.contains('active')) {
+                    toggleSidebar();
+                }
             });
         });
 
-        // Suivi de Réparation
+        // 2. MODE SOMBRE (DARK MODE)
+        const themeToggle = document.getElementById("themeToggle");
+        if (themeToggle) {
+            themeToggle.addEventListener("click", () => {
+                document.body.classList.toggle("dark-mode");
+                themeToggle.textContent = document.body.classList.contains("dark-mode") ? "☀️ Mode Clair" : "🌙 Mode Sombre";
+            });
+        }
+
+        // 3. RECHERCHE EN DIRECT
+        const searchInput = document.getElementById('searchInput');
+        if (searchInput) {
+            searchInput.addEventListener('keyup', () => {
+                const input = searchInput.value.toLowerCase();
+                const serviceItems = document.querySelectorAll('.service-item');
+
+                serviceItems.forEach(item => {
+                    const text = item.textContent.toLowerCase();
+                    item.style.display = text.includes(input) ? "" : "none";
+                });
+            });
+        }
+
+        // 4. SUIVI DE RÉPARATION
         const repairDatabase = {
            "PRO-003L": "Installation terminée : Monsieur POPO LOVE, votre d'installation windows 11 est terminée... 🤗🤗🤗!!!",
+           "PRO-007T": "Montage de batterie et du capot arrière : Monsieur Roosvelt GÉDÉON, votre remplacement d'un capot arrière et d'une batterie iPhone 11 est en cours niveau 45%... Veuillez patientez !!!",
            "PRO-001": "Réparation terminée : Monsieur Jeff GÉDÉON, votre appareil idenfié au numéro suivant:DA0P9CMB6C0, est terminé...🤗🤗🤗 !!!",
-           "PRO-007T": "Montage de batterie et du capot arrière : Monsieur Roosvelt GÉDÉON, votre remplacement d'un capot arrière et d'une batterie iPhone 11 est en cours niveau 60%... Veuillez patientez !!!",
-           "PRO-004A": "Colis en cours d'achéminement pour MacBook pro a1708 année 2017 : Monsieur Judens VINCENT, votre colis est en cours pour être acheminé par un service postal ou une entreprise de livraison. : Niveau 60%... Veuillez patientez !!!",
+           "PRO-004A": "Colis en cours d'achéminement pour MacBook pro a1708 année 2017 : Monsieur Judens VINCENT, votre colis est en cours pour être acheminé par un service postal ou une entreprise de livraison. : Niveau 40%... Veuillez patientez !!!",
            "PRO-002T": "Réparation terminée : Monsieur Paul Yves, votre appareil samsung A10e est terminé niveau 100% 🤗🤗🤗🤗!!!"
         };
-        document.getElementById("btnCheck").addEventListener("click", () => {
-            const trackingInput = document.getElementById("trackingCode");
-            const inputVal = trackingInput ? trackingInput.value.trim().toUpperCase() : "";
-            const resultDiv = document.getElementById("status-result");
 
-            if (!inputVal) {
-                alert("Veuillez entrer un code valide !");
-                return;
+        const btnCheck = document.getElementById("btnCheck");
+        if (btnCheck) {
+            btnCheck.addEventListener("click", () => {
+                const trackingInput = document.getElementById("trackingCode");
+                const inputVal = trackingInput ? trackingInput.value.trim().toUpperCase() : "";
+                const resultDiv = document.getElementById("status-result");
+
+                if (!inputVal) {
+                    alert("Veuillez entrer un code valide !");
+                    return;
+                }
+
+                if (resultDiv) {
+                    resultDiv.style.display = "block";
+                    if (repairDatabase[inputVal]) {
+                        resultDiv.className = "status-found";
+                        resultDiv.innerHTML = "<strong>Code : " + inputVal + "</strong><br>" + repairDatabase[inputVal];
+                    } else {
+                        resultDiv.className = "status-found";
+                        resultDiv.innerHTML = "<strong>Ce code n'existe pas.</strong> Veuillez vérifier votre reçu.";
+                    }
+                }
+            });
+        }
+
+        // 5. DEVIS WHATSAPP
+        const whatsappLink = document.getElementById("whatsappLink");
+        if (whatsappLink) {
+            whatsappLink.addEventListener("click", function(e) {
+                const deviceEl = document.getElementById("deviceType");
+                const problemEl = document.getElementById("problem");
+
+                const device = deviceEl ? deviceEl.value : "";
+                const problem = problemEl ? problemEl.value.trim() : "";
+
+                if (!problem) {
+                    e.preventDefault();
+                    alert("Veuillez décrire votre problème avant d'envoyer.");
+                    return;
+                }
+
+                const text = "Bonjour PRO-TECHNOLOGIE ! Je souhaite un devis :%0A- Service : " + encodeURIComponent(device) + "%0A- Description : " + encodeURIComponent(problem);
+                this.href = "https://wa.me/" + myPhoneNumber + "?text=" + text;
+            });
+        }
+
+        // 6. PAIEMENTS MONCASH & NATCASH
+        const btnMonCash = document.getElementById("btnMonCash");
+        if (btnMonCash) {
+            btnMonCash.addEventListener("click", () => {
+                const amountInput = document.getElementById("payAmount");
+                const refInput = document.getElementById("payRef");
+                const amount = amountInput ? amountInput.value : 0;
+                const ref = refInput && refInput.value ? refInput.value : "Service/Formation-PRO";
+
+                if (!amount || amount <= 0) {
+                    alert("Veuillez saisir un montant valide.");
+                    return;
+                }
+
+                const msg = "Bonjour PRO-TECHNOLOGIE ! Je souhaite effectuer un paiement MonCash de " + amount + " HTG pour : " + ref;
+                window.location.href = "https://wa.me/" + myPhoneNumber + "?text=" + encodeURIComponent(msg);
+            });
+        }
+
+        const btnNatCash = document.getElementById("btnNatCash");
+        if (btnNatCash) {
+            btnNatCash.addEventListener("click", () => {
+                const amountInput = document.getElementById("payAmount");
+                const refInput = document.getElementById("payRef");
+                const amount = amountInput ? amountInput.value : 0;
+                const ref = refInput && refInput.value ? refInput.value : "Service/Formation-PRO";
+
+                if (!amount || amount <= 0) {
+                    alert("Veuillez saisir un montant valide.");
+                    return;
+                }
+                const msg = "Bonjour PRO-TECHNOLOGIE ! Je souhaite effectuer un paiement NatCash de " + amount + " HTG pour : " + ref;
+                window.location.href = "https://wa.me/" + myPhoneNumber + "?text=" + encodeURIComponent(msg);
+            });
+        }
+
+        const btnCard = document.getElementById("btnCard");
+        if (btnCard) {
+            btnCard.addEventListener("click", () => {
+                alert("Module de paiement Carte Bancaire : Veuillez contacter la direction PRO-TECHNOLOGIE.");
+            });
+        }
+
+        // 7. DÉVERROUILLAGE DES COURS VIDÉO PAR CODE
+        const validAccessCodes = ["PRO2026", "MONCASH27", "NATCASH100", "EXPERT-PRO", "STUDENT-PRO"];
+
+        const btnUnlockCode = document.getElementById("btnUnlockCode");
+        if (btnUnlockCode) {
+            btnUnlockCode.addEventListener("click", () => {
+                const inputEl = document.getElementById("accessCodeInput");
+                const errorMsg = document.getElementById("errorMsg");
+                const lockScreen = document.getElementById("lockScreen");
+                const videoContainer = document.getElementById("videoContainer");
+
+                const userCode = inputEl ? inputEl.value.trim().toUpperCase() : "";
+
+                if (validAccessCodes.includes(userCode)) {
+                    if (lockScreen) lockScreen.style.display = "none";
+                    if (videoContainer) videoContainer.style.display = "block";
+                    if (errorMsg) errorMsg.style.display = "none";
+                } else {
+                    if (errorMsg) errorMsg.style.display = "block";
+                }
+            });
+        }
+
+        // 8. CHATBOT INTERACTIF AUTOMATISÉ
+        const chatbotWindow = document.getElementById("chatbotWindow");
+        const openChatbot = document.getElementById("openChatbot");
+        const closeChatbot = document.getElementById("closeChatbot");
+        const chatMessages = document.getElementById("chatMessages");
+        const chatInput = document.getElementById("chatInput");
+        const sendChatBtn = document.getElementById("sendChatBtn");
+
+        function toggleChat() {
+            if (chatbotWindow) chatbotWindow.classList.toggle("active");
+        }
+
+        if (openChatbot) openChatbot.addEventListener("click", toggleChat);
+        if (closeChatbot) closeChatbot.addEventListener("click", toggleChat);
+
+        function processBotMessage() {
+            const text = chatInput.value.trim();
+            if (!text) return;
+
+            const userDiv = document.createElement("div");
+            userDiv.className = "chat-msg user";
+            userDiv.textContent = text;
+            chatMessages.appendChild(userDiv);
+
+            chatInput.value = "";
+            chatMessages.scrollTop = chatMessages.scrollHeight;
+
+            setTimeout(() => {
+                const botDiv = document.createElement("div");
+                botDiv.className = "chat-msg bot";
+
+                const lowerMsg = text.toLowerCase();
+                let reply = "Merci pour votre message ! Pour une réponse immédiate de nos techniciens, vous pouvez aussi nous contacter directement sur WhatsApp au +509 3124-1421.";
+
+                if (lowerMsg.includes("code") || lowerMsg.includes("formation") || lowerMsg.includes("cours") || lowerMsg.includes("video")) {
+                    reply = "🔑 Pour accéder aux vidéos de formation, effectuez votre paiement via MonCash ou NatCash dans la section 'Paiement En Ligne'. Notre équipe vous fournira votre code d'accès personnalisé (`PRO2026`, etc.).";
+                } else if (lowerMsg.includes("moncash") || lowerMsg.includes("natcash") || lowerMsg.includes("payer") || lowerMsg.includes("prix")) {
+                    reply = "💳 Nous acceptons les paiements sécurisés par MonCash et NatCash directement depuis la section 'Paiement En Ligne' de notre site web !";
+                } else if (lowerMsg.includes("adresse") || lowerMsg.includes("local") || lowerMsg.includes("endroit") || lowerMsg.includes("ou")) {
+                    reply = "📍 Nous sommes situés à l'Angle rue Lamarre et Leconte, à l'étage de l'église baptiste Philadelphie, Petit-Goâve, Haïti.";
+                } else if (lowerMsg.includes("suivi") || lowerMsg.includes("reparation") || lowerMsg.includes("pro-")) {
+                    reply = "🔍 Entrez votre numéro de reçu (ex: PRO-001) dans la section 'Suivi de Réparation' plus haut pour vérifier l'état de votre appareil en temps réel !";
+                }
+
+                botDiv.innerHTML = reply;
+                chatMessages.appendChild(botDiv);
+                chatMessages.scrollTop = chatMessages.scrollHeight;
+            }, 600);
+        }
+
+        if (sendChatBtn) sendChatBtn.addEventListener("click", processBotMessage);
+        if (chatInput) {
+            chatInput.addEventListener("keypress", (e) => {
+                if (e.key === "Enter") processBotMessage();
+            });
+        }
+
+        // 9. PROTECTION ANTI-TÉLÉCHARGEMENT & ANTI-COPIE
+        document.addEventListener('contextmenu', event => event.preventDefault());
+
+        document.addEventListener('keydown', event => {
+            if (event.key === 'F12') {
+                event.preventDefault();
             }
-
-            resultDiv.style.display = "block";
-            if (repairDatabase[inputVal]) {
-                resultDiv.className = "status-found";
-                resultDiv.innerHTML = "<strong>Code : " + inputVal + "</strong><br>" + repairDatabase[inputVal];
-            } else {
-                resultDiv.className = "status-found";
-                resultDiv.innerHTML = "<strong>Ce code n'existe pas.</strong> Veuillez vérifier votre reçu.";
+            if ((event.ctrlKey || event.metaKey) && event.shiftKey && (event.key === 'I' || event.key === 'i')) {
+                event.preventDefault();
             }
-        });
-
-        // Devis WhatsApp
-        document.getElementById("whatsappLink").addEventListener("click", function(e) {
-            const device = document.getElementById("deviceType").value;
-            const problem = document.getElementById("problem").value.trim();
-
-            if (!problem) {
-                e.preventDefault();
-                alert("Veuillez décrire votre problème avant d'envoyer.");
-                return;
+            if ((event.ctrlKey || event.metaKey) && (event.key === 'u' || event.key === 'U')) {
+                event.preventDefault();
             }
-
-            const text = "Bonjour PRO-TECHNOLOGIE ! Je souhaite un devis :%0A- Service : " + encodeURIComponent(device) + "%0A- Description : " + encodeURIComponent(problem);
-            this.href = "https://wa.me/" + myPhoneNumber + "?text=" + text;
-        });
-
-        // Correction du bouton MonCash pour éviter l'erreur 404
-document.getElementById("btnMonCash").addEventListener("click", () => {
-    const amountInput = document.getElementById("payAmount");
-    const refInput = document.getElementById("payRef");
-    const amount = amountInput ? amountInput.value : 0;
-    const ref = refInput && refInput.value ? refInput.value : "Service-PRO";
-
-    if (!amount || amount <= 0) {
-        alert("Veuillez saisir un montant valide.");
-        return;
-    }
-
-    const msg = "Bonjour PRO-TECHNOLOGIE ! Je souhaite effectuer un paiement MonCash de " + amount + " HTG pour le numéro/reçu : " + ref;
-    window.location.href = "https://wa.me/" + myPhoneNumber + "?text=" + encodeURIComponent(msg);
-});
-
-        document.getElementById("btnNatCash").addEventListener("click", () => {
-            const amountInput = document.getElementById("payAmount");
-            const refInput = document.getElementById("payRef");
-            const amount = amountInput ? amountInput.value : 0;
-            const ref = refInput && refInput.value ? refInput.value : "Service-PRO";
-
-            if (!amount || amount <= 0) {
-                alert("Veuillez saisir un montant valide.");
-                return;
-            }
-            const msg = "Bonjour, je souhaite effectuer un paiement NatCash de " + amount + " HTG pour la référence: " + ref;
-            window.location.href = "https://wa.me/" + myPhoneNumber + "?text=" + encodeURIComponent(msg);
-        });
-
-        document.getElementById("btnC zbnb ard").addEventListener("click", () => {
-            alert("Module de paiement Carte Bancaire : Veuillez contacter la direction PRO-TECHNOLOGIE.");
         });
     </script>
 </body>
